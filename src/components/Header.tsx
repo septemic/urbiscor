@@ -5,6 +5,7 @@ import { Icon } from './Icons'
 import { Logo } from './Logo'
 import { QuoteLink } from './QuoteLink'
 import { navItems } from './nav'
+import { setSmoothScrollLock } from '@/lib/smoothScroll'
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -25,6 +26,7 @@ export function Header() {
   useEffect(() => {
     if (!open) return
     document.body.style.overflow = 'hidden'
+    setSmoothScrollLock(true)
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setOpen(false)
@@ -34,6 +36,7 @@ export function Header() {
     window.addEventListener('keydown', onKey)
     return () => {
       document.body.style.overflow = ''
+      setSmoothScrollLock(false)
       window.removeEventListener('keydown', onKey)
     }
   }, [open])
@@ -102,6 +105,7 @@ export function Header() {
       {/* Mobile menu */}
       <div
         id="meniu-mobil"
+        data-lenis-prevent
         className={`fixed inset-x-0 bottom-0 overflow-y-auto bg-night grid-dark transition-[opacity,visibility] duration-300 lg:hidden ${
           scrolled ? 'top-[68px]' : 'top-[76px]'
         } ${open ? 'visible opacity-100' : 'invisible opacity-0'}`}
