@@ -1,0 +1,17 @@
+# pnpm reads project settings from this file (v10+); .npmrc is auth/registry only.
+
+# pnpm 12 refuses lockfile entries published less than 24 hours ago
+# (minimumReleaseAge defaults to 1440 minutes). These two transitive dependencies
+# of import-in-the-middle were younger than that when the lockfile was committed,
+# so they are exempted by exact version instead of relaxing the policy for the
+# whole project. Drop an entry once the published version ages past the cutoff.
+minimumReleaseAgeExclude:
+  - cjs-module-lexer@2.3.0
+  - es-module-lexer@3.0.3
+
+# Install scripts that are explicitly allowed to run (pnpm 12 spelling; the old
+# onlyBuiltDependencies list was replaced by this map). esbuild and sharp need
+# their scripts to wire up the native binaries.
+allowBuilds:
+  esbuild: true
+  sharp: true
