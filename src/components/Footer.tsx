@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { site, whatsappMessage } from '@/config/site'
-import { Icon, WhatsAppIcon } from './Icons'
+import { Icon, WhatsAppIcon, type IconName } from './Icons'
 import { Logo } from './Logo'
 
 const footerNav = [
@@ -11,10 +11,12 @@ const footerNav = [
   { label: 'Contact', to: '/contact' },
 ] as const
 
-const socials = [
+// Typed explicitly: the URLs are literal types from `site` (which is `as const`),
+// so an inferred tuple would narrow the "profile not set yet" branch to `never`.
+const socials: { label: string; icon: IconName; url: string }[] = [
   { label: 'Facebook', icon: 'facebook', url: site.social.facebook },
   { label: 'Instagram', icon: 'instagram', url: site.social.instagram },
-] as const
+]
 
 export function Footer() {
   return (
