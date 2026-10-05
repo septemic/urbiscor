@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import type { Project } from '@/data/projects'
 import { cdn } from '@/lib/image'
 import { Icon } from './Icons'
+import { setSmoothScrollLock } from '@/lib/smoothScroll'
 
 export function Lightbox({ items, index, onClose, onIndex }: { items: Project[]; index: number; onClose: () => void; onIndex: (i: number) => void }) {
   const ref = useRef<HTMLDialogElement>(null)
@@ -11,8 +12,10 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Project[];
     const dialog = ref.current
     if (dialog && !dialog.open) dialog.showModal()
     document.body.style.overflow = 'hidden'
+    setSmoothScrollLock(true)
     return () => {
       document.body.style.overflow = ''
+      setSmoothScrollLock(false)
     }
   }, [])
 

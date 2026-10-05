@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Icon } from '@/components/Icons'
 import { RevealObserver } from '@/components/Reveal'
+import { SmoothScroll } from '@/components/SmoothScroll'
 
 import '../styles.css'
 
@@ -74,6 +75,7 @@ function Layout() {
       {/* Space for the mobile contact bar so it never covers the footer */}
       <div className="h-16 md:hidden" aria-hidden="true" />
       <RevealObserver />
+      <SmoothScroll />
     </>
   )
 }
