@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head><meta charset="utf-8" /><meta name="robots" content="noindex" /><title>Formulare</title></head>
+  <body>
+    <!-- Exists only so Netlify registers the "oferta" form at build time. Keep fields in sync with src/components/QuoteForm.tsx -->
+    <form name="oferta" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="oferta" />
+      <input name="sursa" />
+      <input name="nume" />
+      <input name="telefon" />
+      <input name="email" />
+      <input name="localitate" />
+      <select name="tip_proiect"><option>Casă parter</option><option>Casă P+1</option><option>Casă P+M</option><option>Alt proiect</option></select>
+      <input name="suprafata" />
+      <textarea name="detalii"></textarea>
+      <input name="proiect_tehnic" />
+      <input name="acord_gdpr" />
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>

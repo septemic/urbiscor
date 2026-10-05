@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /__forms.html
+
+Sitemap: https://heartfelt-sunflower-f08e0b.netlify.app/sitemap.xml
