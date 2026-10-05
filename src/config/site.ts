@@ -14,12 +14,13 @@ export const site = {
   /** Public site URL, used for canonical links, sitemap, Open Graph and structured data. */
   url: 'https://urbiscor.ro',
   /**
-   * Social profiles. Leave empty until the real URLs exist — empty entries
-   * are shown as "în curând" in the footer instead of a broken link.
+   * Social profiles. An empty entry is rendered as a non-link "în curând" chip
+   * in the footer and left out of the schema.org `sameAs` list, so a profile can
+   * be removed again without leaving a broken link behind.
    */
   social: {
-    facebook: '',
-    instagram: '',
+    facebook: 'https://www.facebook.com/profile.php?id=61595110501446',
+    instagram: 'https://www.instagram.com/urbiscor',
   },
 } as const
 
