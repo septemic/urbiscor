@@ -11,7 +11,11 @@ const config = defineConfig({
       projects: ['./tsconfig.json'],
     }),
     tailwindcss(),
-    netlify(),
+    // The site ships no Netlify Edge Functions, and the emulator bundled with
+    // this plugin launches Deno with `eval --allow-scripts`, a flag Deno 2.9
+    // dropped. Turning the (unused) Edge Functions emulation off keeps local
+    // dev working; Netlify Functions, Image CDN and redirects stay emulated.
+    netlify({ dev: { edgeFunctions: { enabled: false } } }),
     tanstackStart(),
     viteReact(),
   ],
