@@ -11,8 +11,8 @@ export const site = {
   phoneE164: '+40745013023',
   whatsappHref: 'https://wa.me/40745013023',
   area: 'Oltenia, România',
-  /** Public site URL, used for canonical links, sitemap and Open Graph. Update when a custom domain is connected. */
-  url: 'https://heartfelt-sunflower-f08e0b.netlify.app',
+  /** Public site URL, used for canonical links, sitemap, Open Graph and structured data. */
+  url: 'https://urbiscor.ro',
   /**
    * Social profiles. Leave empty until the real URLs exist — empty entries
    * are shown as "în curând" in the footer instead of a broken link.
