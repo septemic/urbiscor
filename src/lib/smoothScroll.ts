@@ -13,18 +13,34 @@ let lenis: Lenis | null = null
 
 export function startSmoothScroll() {
   if (lenis || typeof window === 'undefined') return
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-  if (!window.matchMedia('(pointer: fine)').matches) return
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    console.info('[smooth-scroll] off: the system asks for reduced motion')
+    return
+  }
+  /**
+   * `any-pointer: fine` — not `pointer: fine`. On a desktop or laptop with a
+   * touchscreen, Windows reports the touch digitizer as the *primary* pointer
+   * (`pointer: coarse`), so the strict check silently disabled smoothing on
+   * machines where the visitor scrolls with a mouse. `any-pointer` asks whether
+   * a mouse is available at all; touch scrolling stays native either way
+   * (`syncTouch: false`), so this only decides whether the wheel is smoothed.
+   */
+  if (!window.matchMedia('(any-pointer: fine)').matches) {
+    console.info('[smooth-scroll] off: no mouse or trackpad available (touch-only device)')
+    return
+  }
 
   lenis = new Lenis({
     autoRaf: true,
     smoothWheel: true,
     syncTouch: false,
     /**
-     * Tuning: the share of the remaining distance covered each frame.
-     * Higher is snappier, lower is floatier — keep it subtle.
+     * Tuning. With `duration` every wheel notch starts a timed animation, so a
+     * burst of notches glides instead of stepping. Use Lenis's `lerp` (share of
+     * the remaining distance per frame) instead for a snappier, more direct
+     * feel; `duration` wins when both are set.
      */
-    lerp: 0.1,
+    duration: 1.15,
   })
 }
 
