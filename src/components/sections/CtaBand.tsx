@@ -18,12 +18,12 @@ export function CtaBand() {
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/75" data-reveal>
             Trimite-ne proiectul sau detaliile construcției și solicită o ofertă.
           </p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center" data-reveal>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center" data-reveal>
             <QuoteLink className="btn btn-gold">
-              Solicită ofertă <Icon name="arrow" size={18} className="arrow" />
+              Solicită ofertă gratuită <Icon name="arrow" size={18} className="arrow" />
             </QuoteLink>
             <a href={whatsappMessage()} target="_blank" rel="noopener noreferrer" className="btn btn-outline-light">
-              <WhatsAppIcon size={20} /> WhatsApp
+              <WhatsAppIcon size={20} /> Discută pe WhatsApp
             </a>
             <a href={site.phoneHref} className="inline-flex items-center gap-3 px-2 py-3 font-display text-xl font-bold hover:text-gold sm:ml-4">
               <Icon name="phone" size={22} className="text-gold" />

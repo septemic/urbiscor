@@ -118,3 +118,28 @@ measurements, not a fresh hosted PageSpeed score. Browser checks cover native
 new-tab links, 44px targets, hoverable and Escape-dismissible labels, keyboard
 focus, responsive outer margins, mobile/touch hiding, dark mode, reduced motion,
 no-JavaScript links and zero idle animation frames.
+
+## Unified contact controls
+
+WhatsApp, Facebook and Instagram now share one contact rail, matching 44px
+targets, opaque anthracite surfaces and short gold hover/focus transitions.
+WhatsApp leads the group with a gold accent and a project-enquiry label. On
+narrower or touch screens, WhatsApp remains available in the bottom corner;
+mobile retains the phone/WhatsApp/free-quote bar. Social profiles remain in the
+footer. Empty profile URLs are still omitted from the rail.
+
+The previous expanding WhatsApp button and the mobile bar's backdrop blur were
+removed. Labels animate opacity/transform instead of changing button width.
+There are no new dependencies, assets, startup requests, tracking, scroll
+listeners or idle animation frames. Reduced motion and keyboard/Escape behavior
+remain supported. Quote wording clarifies the already-existing free offer;
+form fields, destination and notification configuration are unchanged.
+
+The final production build measured **98 mobile / 100 desktop** in Lighthouse
+13.5.0 through the warmed verified-HTTPS bridge. Mobile FCP was 1.0s, LCP 2.3s,
+blocking time 0ms and layout shift 0. These are lab measurements, not a hosted
+PageSpeed score or proof of a conversion-rate increase. TypeScript, the build
+and browser checks passed, including responsive gutters, native links, mobile
+quote navigation, dark theme, reduced motion and no-JavaScript behavior. Hosted
+feature checks exclude Netlify's existing preview utility scripts. No real form
+email was sent.

@@ -30,7 +30,7 @@ const paths = {
   check: 'M6 16.5l6.5 6.5L26 9.5',
   shield: 'M16 4l10 4v7c0 6.5-4.3 11-10 13-5.7-2-10-6.5-10-13V8zM11.5 16l3.2 3.2L21 13',
   facebook: 'M18 28V17h4l.6-4.5H18V9.7c0-1.3.4-2.2 2.2-2.2h2.4v-4a31 31 0 0 0-3.5-.2c-3.5 0-5.8 2.1-5.8 6v3.2H9.5V17h3.8v11',
-  instagram: 'M5 5h22v22H5zM16 21a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM22.5 9.5h.01',
+  instagram: 'M11 4h10a7 7 0 0 1 7 7v10a7 7 0 0 1-7 7H11a7 7 0 0 1-7-7V11a7 7 0 0 1 7-7zM16 21a5 5 0 1 0 0-10 5 5 0 0 0 0 10zM23 9h.01',
 } as const
 
 export type IconName = keyof typeof paths

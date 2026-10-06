@@ -54,10 +54,10 @@ export function ContactSection({ source, headingLevel = 'h2' }: { source: string
         <div className="max-w-3xl" data-reveal>
           <p className="eyebrow">Contact</p>
           <H id="oferta-titlu" className="mt-4 text-[2rem] font-extrabold leading-[1.08] sm:text-[2.6rem] lg:text-[3rem]">
-            Solicită o ofertă
+            Solicită o ofertă gratuită
           </H>
           <p className="mt-5 text-lg leading-relaxed text-steel">
-            Completează formularul cu detaliile construcției. Ofertarea este gratuită și se face în funcție de proiect și de lucrările solicitate.
+            Spune-ne unde construiești și în ce etapă este proiectul. Oferta este gratuită și se stabilește în funcție de proiect și de lucrările solicitate.
           </p>
         </div>
         <div className="mt-12 grid gap-6 lg:grid-cols-12 lg:gap-8">
