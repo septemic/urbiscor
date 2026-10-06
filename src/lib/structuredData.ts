@@ -1,5 +1,6 @@
 import { site } from '@/config/site'
 import { serviceDetails } from '@/data/services'
+import { servicePaths } from '@/config/servicePaths'
 
 /**
  * schema.org GeneralContractor (a LocalBusiness subtype).
@@ -32,9 +33,20 @@ export function businessSchema() {
       name: 'Servicii de construcții',
       itemListElement: serviceDetails.map((s) => ({
         '@type': 'Offer',
-        itemOffered: { '@type': 'Service', name: s.title, areaServed: 'Oltenia', url: `${site.url}/servicii#${s.id}` },
+        itemOffered: { '@type': 'Service', name: s.title, areaServed: 'Oltenia', url: `${site.url}${servicePaths[s.id]}` },
       })),
     },
     sameAs: Object.values(site.social).filter(Boolean),
+  }
+}
+
+export function siteSchema() {
+  const { '@context': context, ...business } = businessSchema()
+  return {
+    '@context': context,
+    '@graph': [business, {
+      '@type': 'WebSite', '@id': `${site.url}/#website`, url: `${site.url}/`,
+      name: site.name, inLanguage: 'ro-RO', publisher: { '@id': `${site.url}/#business` },
+    }],
   }
 }

@@ -22,7 +22,7 @@ Website for **URBISCOR CONSTRUCT**, a residential construction company building 
 - No analytics or tracking scripts, so no cookie banner is needed
 - Light/dark mode toggle in the header; defaults to the system theme and remembers explicit choices in browser local storage. Coordinated palette and icon transitions follow the site's easing and respect reduced motion; saved themes apply immediately on first paint.
 - The fixed header's full-height background tracks page progress with a CSS root scroll timeline. A passive, frame-coalesced fallback runs only when scroll timelines are unsupported; IntersectionObserver updates section links and their brief gold pulse without per-scroll React renders or backdrop blur.
-- Facebook and Instagram float in the outer margin on wide desktop screens (1280px+, with a mouse/trackpad and at least 400px of height). The transparent rail reuses existing SVGs and configured links, with CSS hover/focus transitions and reduced-motion support. Labels stay open under the pointer and dismiss with Escape; smaller/touch screens retain footer links. It adds no network requests, scroll observers or animation loop.
+- WhatsApp leads a unified contact rail with Facebook and Instagram in the outer margin on wide desktop screens (1280px+, with a mouse/trackpad and at least 400px of height). Matching 44px anthracite controls reuse existing SVGs and configured links, with gold hover/focus accents and reduced-motion support. Labels stay open under the pointer and dismiss with Escape; smaller/touch screens retain a WhatsApp corner control or the mobile contact bar, plus footer social links. It adds no startup requests, scroll observers or animation loop.
 
 ## Run locally
 
@@ -35,7 +35,7 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 
 - **Contact details, site URL, social links:** `src/config/site.ts`. Facebook/Instagram show "în curând" until a URL is set; both are filled in now.
 - **Portfolio photos:** `src/data/projects.ts`. Current images are illustrative placeholders (`placeholder: true`, labelled "Imagine ilustrativă" on the site). Add real photos to `public/img/proiecte/` and new entries with `placeholder: false`.
-- **Services:** `src/data/services.ts`.
+- **Services:** `src/data/services.ts`; detailed page guidance is in `src/data/servicePages.ts`, with titles/descriptions in `src/config/serviceMetadata.ts` and stable URLs in `src/config/servicePaths.ts`.
 - **Custom domain:** update `site.url` in `src/config/site.ts`, plus `public/sitemap.xml` and `public/robots.txt`.
 - **Quote form fields:** if you change them in `src/components/QuoteForm.tsx`, update `public/__forms.html` to match.
 - **Theme colors:** semantic surface/text colors live in `src/styles.css`; `src/lib/theme.ts` initializes the theme before rendering, and `src/components/ThemeToggle.tsx` handles saved, system, and cross-tab changes. Keep fixed `ink`/white colors for gold buttons and dark image overlays; use `surface`/`foreground` for theme-aware content.
@@ -43,7 +43,7 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 
 ## Performance
 
-- All seven marketing routes are prerendered during `pnpm build`. Netlify serves
+- All 13 content routes are prerendered during `pnpm build`. Netlify serves
   their HTML from the CDN; its adapter retains SSR for unmatched routes. Flat
   HTML output preserves clean URLs such as `/contact`. The small shared
   stylesheet is inlined through TanStack Start so it can paint with the HTML
@@ -67,6 +67,15 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 The static `public/__forms.html` skeleton is the sole Netlify form-registration
 source. Runtime forms keep the same name, action, fields and honeypot without
 the build-time attributes that Netlify strips from prerendered HTML.
+
+## Search visibility
+
+Service pages have independent crawlable URLs, unique metadata and linked
+Service/BreadcrumbList entities. Keep the sitemap and explicit `.html` redirects
+in `netlify.toml` in sync when adding routes. The public Netlify hostname redirects
+to the primary domain; deploy previews remain available. Search Console setup,
+local visibility priorities and IndexNow notification instructions are in
+[docs/search-visibility.md](docs/search-visibility.md).
 
 ## Contact form email notifications
 

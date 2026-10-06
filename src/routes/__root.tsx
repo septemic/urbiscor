@@ -1,6 +1,6 @@
 import { Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 import { site } from '@/config/site'
-import { businessSchema } from '@/lib/structuredData'
+import { siteSchema } from '@/lib/structuredData'
 import { pageHead } from '@/lib/seo'
 import { themeBoot } from '@/lib/theme'
 import { fontPreloads } from '@/lib/fonts'
@@ -55,7 +55,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
         <script dangerouslySetInnerHTML={{ __html: revealBoot }} />
         <PageHead />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema()) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema()) }} />
       </head>
       <body>
         {children}

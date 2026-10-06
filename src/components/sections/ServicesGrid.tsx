@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { serviceCards } from '@/data/services'
+import { servicePaths } from '@/config/servicePaths'
 import { Icon } from '../Icons'
 import { SectionHeading } from '../SectionHeading'
 
@@ -21,7 +22,9 @@ export function ServicesGrid() {
                 <Icon name={s.icon} size={44} className="text-foreground transition-colors duration-300 group-hover:text-gold" />
                 <span className="font-display text-sm font-bold tracking-widest text-gold-deep transition-colors group-hover:text-gold">{s.n}</span>
               </div>
-              <h3 className="mt-8 text-xl font-extrabold leading-snug transition-colors group-hover:text-white">{s.title}</h3>
+              <h3 className="mt-8 text-xl font-extrabold leading-snug transition-colors group-hover:text-white">
+                <Link to={servicePaths[s.id]} className="underline decoration-gold/50 underline-offset-4 hover:decoration-gold">{s.title}</Link>
+              </h3>
               <p className="mt-3 leading-relaxed text-steel transition-colors group-hover:text-mist">{s.text}</p>
               <span className="absolute bottom-0 left-0 h-[3px] w-0 bg-gold transition-[width] duration-500 group-hover:w-full" aria-hidden="true" />
             </li>

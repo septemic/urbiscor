@@ -7,7 +7,9 @@ type SectionId = (typeof navItems)[number]['sectionId']
 export function useHeaderScroll(pathname: string) {
   const sentinelRef = useRef<HTMLSpanElement>(null)
   const progressRef = useRef<HTMLDivElement>(null)
-  const pageSection = navItems.find((item) => item.to === pathname && !item.hash)?.sectionId ?? null
+  const pageSection = navItems.find((item) => !item.hash && (
+    item.to === pathname || (item.to !== '/' && pathname.startsWith(`${item.to}/`))
+  ))?.sectionId ?? null
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState<SectionId | null>(pageSection)
 

@@ -1,18 +1,19 @@
 import type { IconName } from '@/components/Icons'
+import type { servicePaths } from '@/config/servicePaths'
 
 /** Homepage service cards. */
-export const serviceCards: { n: string; title: string; text: string; icon: IconName }[] = [
-  { n: '01', title: 'Construcții case la roșu', icon: 'house', text: 'Execuția structurii complete a locuinței, de la fundație până la zidărie și placa finală.' },
-  { n: '02', title: 'Fundații', icon: 'foundation', text: 'Trasare, săpături, armare, cofrare și turnare conform proiectului tehnic.' },
-  { n: '03', title: 'Structuri din beton armat', icon: 'frame', text: 'Execuție stâlpi, grinzi, centuri și plăci din beton armat.' },
-  { n: '04', title: 'Cofrare și turnare', icon: 'pour', text: 'Cofraje profesionale și turnări realizate organizat, cu echipamente adecvate fiecărei etape.' },
-  { n: '05', title: 'Zidărie', icon: 'masonry', text: 'Execuție zidărie din BCA sau cărămidă conform proiectului.' },
-  { n: '06', title: 'Sistem Doka propriu', icon: 'formwork', text: 'Dispunem de sistem profesional de cofrare Doka și popi metalici proprii pentru o execuție eficientă și organizată.' },
+export const serviceCards: { n: string; id: keyof typeof servicePaths; title: string; text: string; icon: IconName }[] = [
+  { n: '01', id: 'constructii-la-rosu', title: 'Construcții case la roșu', icon: 'house', text: 'Execuția structurii complete a locuinței, de la fundație până la zidărie și placa finală.' },
+  { n: '02', id: 'fundatii', title: 'Fundații', icon: 'foundation', text: 'Trasare, săpături, armare, cofrare și turnare conform proiectului tehnic.' },
+  { n: '03', id: 'structuri-beton-armat', title: 'Structuri din beton armat', icon: 'frame', text: 'Execuție stâlpi, grinzi, centuri și plăci din beton armat.' },
+  { n: '04', id: 'cofrare', title: 'Cofrare și turnare', icon: 'pour', text: 'Cofraje profesionale și turnări realizate organizat, cu echipamente adecvate fiecărei etape.' },
+  { n: '05', id: 'zidarie', title: 'Zidărie', icon: 'masonry', text: 'Execuție zidărie din BCA sau cărămidă conform proiectului.' },
+  { n: '06', id: 'doka', title: 'Sistem Doka propriu', icon: 'formwork', text: 'Dispunem de sistem profesional de cofrare Doka și popi metalici proprii pentru o execuție eficientă și organizată.' },
 ]
 
 /** Detailed sections on /servicii. `id` is used as the page anchor. */
 export const serviceDetails: {
-  id: string
+  id: keyof typeof servicePaths
   title: string
   icon: IconName
   image: string
