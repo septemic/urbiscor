@@ -16,7 +16,11 @@ const config = defineConfig({
     // dropped. Turning the (unused) Edge Functions emulation off keeps local
     // dev working; Netlify Functions, Image CDN and redirects stay emulated.
     netlify({ dev: { edgeFunctions: { enabled: false } } }),
-    tanstackStart(),
+    // Marketing routes have no request-specific data. Serve their generated
+    // HTML from the CDN; the Netlify adapter keeps SSR for unmatched routes.
+    tanstackStart({
+      prerender: { enabled: true, autoSubfolderIndex: false, crawlLinks: false, failOnError: true },
+    }),
     viteReact(),
   ],
 })

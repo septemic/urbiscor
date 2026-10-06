@@ -62,8 +62,6 @@ export function QuoteForm({ source }: { source: string }) {
       name="oferta"
       method="POST"
       action="/__forms.html"
-      data-netlify="true"
-      netlify-honeypot="bot-field"
       onSubmit={onSubmit}
       className="ticks border border-line bg-surface p-6 sm:p-8 md:p-10"
       aria-describedby="oferta-nota"

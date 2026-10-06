@@ -18,6 +18,7 @@ import { srcSet } from '@/lib/image'
 
 const HERO = '/img/hero.jpg'
 const HERO_WIDTHS = [640, 960, 1376]
+const HERO_QUALITY = 55
 
 export const Route = createFileRoute('/')({
   head: () => {
@@ -29,7 +30,14 @@ export const Route = createFileRoute('/')({
     })
     return {
       ...h,
-      links: [...h.links, { rel: 'preload', as: 'image', imageSrcSet: srcSet(HERO, HERO_WIDTHS), imageSizes: '100vw', fetchPriority: 'high' }],
+      links: [...h.links, {
+        rel: 'preload',
+        as: 'image',
+        type: 'image/avif',
+        imageSrcSet: srcSet(HERO, HERO_WIDTHS, undefined, { q: HERO_QUALITY, format: 'avif' }),
+        imageSizes: '100vw',
+        fetchPriority: 'high',
+      }],
     }
   },
   component: Home,
@@ -76,6 +84,7 @@ function Hero() {
         src={HERO}
         alt="Casă în construcție în stadiul la roșu, cu structură din beton armat, cofraj Doka, popi metalici și schelă"
         widths={HERO_WIDTHS}
+        quality={HERO_QUALITY}
         priority
         className="absolute inset-0 -z-10 h-full w-full object-cover object-[62%_center]"
       />

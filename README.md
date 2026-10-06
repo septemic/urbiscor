@@ -15,7 +15,7 @@ Website for **URBISCOR CONSTRUCT**, a residential construction company building 
 
 ## Tech
 
-- React 19 + TypeScript, TanStack Start (SSR) on Vite 7
+- React 19 + TypeScript, TanStack Start on Vite 7, with prerendered marketing pages and an SSR fallback
 - Tailwind CSS 4 with a small custom design system in `src/styles.css`
 - Netlify Forms for the quote form (`oferta`), Netlify Image CDN for responsive AVIF/WebP images
 - Self-hosted Manrope + Inter variable fonts (no Google Fonts requests)
@@ -39,6 +39,28 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 - **Quote form fields:** if you change them in `src/components/QuoteForm.tsx`, update `public/__forms.html` to match.
 - **Theme colors:** semantic surface/text colors live in `src/styles.css`; `src/lib/theme.ts` initializes the theme before rendering, and `src/components/ThemeToggle.tsx` handles saved, system, and cross-tab changes. Keep fixed `ink`/white colors for gold buttons and dark image overlays; use `surface`/`foreground` for theme-aware content.
 - **Header progress and sections:** `src/hooks/useHeaderScroll.ts` owns observer lifecycle and the older-browser progress fallback. `sectionId` in `src/components/nav.ts` maps page sections to nav links; unnamed sections inherit the preceding link. Fill and pulse styles live in `src/styles.css`; reduced motion retains progress but disables pulses.
+
+## Performance
+
+- All seven marketing routes are prerendered during `pnpm build`. Netlify serves
+  their HTML from the CDN; its adapter retains SSR for unmatched routes. Flat
+  HTML output preserves clean URLs such as `/contact`.
+- `Picture` prefers AVIF, with the CDN-negotiated image as a fallback. Keep a
+  priority image's quality, widths and sizes in sync with its typed preload;
+  the homepage hero uses one AVIF request. Gallery sizes reflect its actual grid.
+- Fonts keep the original Latin files and use small Romanian supplements,
+  including variable weights and legacy cedillas. To regenerate supplements
+  after updating Fontsource: install `fonttools[woff]==4.61.1` in a Python
+  environment, then run `python scripts/subset-fonts.py`. The generated fonts
+  and licenses are committed, so production builds do not need Python. Update
+  the subsets and CSS unicode ranges if another language is added.
+- Lenis loads only for visitors with a mouse or trackpad who permit motion.
+  Animation frames run during smooth wheel scrolling and stop when it settles.
+  Touch scrolling stays native; menu and lightbox locks also stop the frames.
+
+The static `public/__forms.html` skeleton is the sole Netlify form-registration
+source. Runtime forms keep the same name, action, fields and honeypot without
+the build-time attributes that Netlify strips from prerendered HTML.
 
 ## Contact form email notifications
 

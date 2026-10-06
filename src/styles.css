@@ -1,6 +1,5 @@
 @import "tailwindcss" source("../");
-@import "@fontsource-variable/manrope/wght.css";
-@import "@fontsource-variable/inter/wght.css";
+@import "./fonts.css";
 
 @theme {
   --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
