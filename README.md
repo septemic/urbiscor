@@ -22,6 +22,7 @@ Website for **URBISCOR CONSTRUCT**, a residential construction company building 
 - No analytics or tracking scripts, so no cookie banner is needed
 - Light/dark mode toggle in the header; defaults to the system theme and remembers explicit choices in browser local storage. Coordinated palette and icon transitions follow the site's easing and respect reduced motion; saved themes apply immediately on first paint.
 - The fixed header's full-height background tracks page progress with a CSS root scroll timeline. A passive, frame-coalesced fallback runs only when scroll timelines are unsupported; IntersectionObserver updates section links and their brief gold pulse without per-scroll React renders or backdrop blur.
+- Facebook and Instagram float in the outer margin on wide desktop screens (1280px+, with a mouse/trackpad and at least 400px of height). The transparent rail reuses existing SVGs and configured links, with CSS hover/focus transitions and reduced-motion support. Labels stay open under the pointer and dismiss with Escape; smaller/touch screens retain footer links. It adds no network requests, scroll observers or animation loop.
 
 ## Run locally
 
