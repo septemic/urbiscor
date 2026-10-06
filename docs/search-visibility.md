@@ -2,10 +2,11 @@
 
 Audit date: 6 October 2026. The owner has confirmed that `urbiscor.ro` was added
 to Google Search Console and domain ownership was verified. The owner's URL
-inspection screenshot reports that the homepage is **not on Google**. It does
-not show the exclusion reason or live-test result; those details are still
-needed to diagnose the indexing status precisely. Site-wide coverage and query
-rankings require the property's reports.
+inspection screenshots report **URL is unknown to Google**, with no recorded
+crawl or referring sitemap. This identifies a discovery gap in the report;
+the live-test result is still needed to verify Google's current ability to
+fetch and index the page. Site-wide coverage and query rankings require the
+property's reports.
 
 ## What the public audit established
 
@@ -67,6 +68,8 @@ FAQs, breadcrumbs, quote navigation, responsive layouts and no-JavaScript use.
 1. Select the verified **Domain property `urbiscor.ro`**. Under **Indexing →
    Sitemaps**, submit `https://urbiscor.ro/sitemap.xml`. Check for **Success**
    and review the discovered URL count after Google processes the sitemap.
+   If the sitemap is already submitted successfully, allow processing rather
+   than repeatedly resubmitting it. Referring-sitemap information can lag.
 2. Use **URL inspection** for the homepage and the six service URLs above.
    If a URL is not indexed, read the reason, run **Test live URL**, and use
    **Request indexing** when the live page is available to Google. Do not
@@ -83,6 +86,14 @@ FAQs, breadcrumbs, quote navigation, responsive layouts and no-JavaScript use.
    for Romanian searches over time. Track relevant impressions, clicks and
    enquiries. Average position depends on the query, location and device and
    should not be treated as a single fixed website rank.
+
+For the owner's current **URL is unknown to Google** status, prioritize sitemap
+submission and a successful live test followed by a homepage indexing request.
+The `N/A` crawl/canonical rows mean the report has no recorded crawl data; they
+are not separate diagnosed errors. Also inspect the main service page at
+`https://urbiscor.ro/servicii/constructii-case-la-rosu` and the other important
+service URLs after publication. The sitemap is sufficient to list all pages;
+individual requests are useful for priority URLs, not a repeated daily task.
 
 Search Console reports may take time to populate. A submitted sitemap or a
 successful live test does not mean the URL is already indexed. Requests do not
