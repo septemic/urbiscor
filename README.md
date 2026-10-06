@@ -21,6 +21,7 @@ Website for **URBISCOR CONSTRUCT**, a residential construction company building 
 - Self-hosted Manrope + Inter variable fonts (no Google Fonts requests)
 - No analytics or tracking scripts, so no cookie banner is needed
 - Light/dark mode toggle in the header; defaults to the system theme and remembers explicit choices in browser local storage. Coordinated palette and icon transitions follow the site's easing and respect reduced motion; saved themes apply immediately on first paint.
+- The fixed header's full-height background tracks page progress with a CSS root scroll timeline. A passive, frame-coalesced fallback runs only when scroll timelines are unsupported; IntersectionObserver updates section links and their brief gold pulse without per-scroll React renders or backdrop blur.
 
 ## Run locally
 
@@ -37,6 +38,7 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 - **Custom domain:** update `site.url` in `src/config/site.ts`, plus `public/sitemap.xml` and `public/robots.txt`.
 - **Quote form fields:** if you change them in `src/components/QuoteForm.tsx`, update `public/__forms.html` to match.
 - **Theme colors:** semantic surface/text colors live in `src/styles.css`; `src/lib/theme.ts` initializes the theme before rendering, and `src/components/ThemeToggle.tsx` handles saved, system, and cross-tab changes. Keep fixed `ink`/white colors for gold buttons and dark image overlays; use `surface`/`foreground` for theme-aware content.
+- **Header progress and sections:** `src/hooks/useHeaderScroll.ts` owns observer lifecycle and the older-browser progress fallback. `sectionId` in `src/components/nav.ts` maps page sections to nav links; unnamed sections inherit the preceding link. Fill and pulse styles live in `src/styles.css`; reduced motion retains progress but disables pulses.
 
 ## Publishing when the free-plan build credits are used up
 

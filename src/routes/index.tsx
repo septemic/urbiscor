@@ -71,7 +71,7 @@ function Home() {
 
 function Hero() {
   return (
-    <section aria-labelledby="hero-titlu" className="relative isolate flex min-h-[640px] items-end overflow-hidden bg-night text-white h-[100svh] max-h-[980px]">
+    <section id="acasa" aria-labelledby="hero-titlu" className="relative isolate flex min-h-[640px] items-end overflow-hidden bg-night text-white h-[100svh] max-h-[980px]">
       <Picture
         src={HERO}
         alt="Casă în construcție în stadiul la roșu, cu structură din beton armat, cofraj Doka, popi metalici și schelă"
