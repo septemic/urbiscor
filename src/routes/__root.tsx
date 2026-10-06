@@ -3,6 +3,7 @@ import { site } from '@/config/site'
 import { businessSchema } from '@/lib/structuredData'
 import { pageHead } from '@/lib/seo'
 import { themeBoot } from '@/lib/theme'
+import { fontPreloads } from '@/lib/fonts'
 import { FloatingContact } from '@/components/FloatingContact'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
@@ -35,6 +36,7 @@ export const Route = createRootRoute({
       ...defaults.meta,
     ],
     links: [
+      ...fontPreloads,
       { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       { rel: 'manifest', href: '/site.webmanifest' },

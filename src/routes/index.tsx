@@ -14,24 +14,18 @@ import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { TrustBar } from '@/components/sections/TrustBar'
 import { WhyUs } from '@/components/sections/WhyUs'
 import { pageHead } from '@/lib/seo'
-import { srcSet } from '@/lib/image'
 
 const HERO = '/img/hero.jpg'
 const HERO_WIDTHS = [640, 960, 1376]
+const HERO_QUALITY = 55
 
 export const Route = createFileRoute('/')({
-  head: () => {
-    const h = pageHead({
-      title: 'URBISCOR CONSTRUCT | Construcții Case la Roșu în Oltenia',
-      description:
-        'URBISCOR CONSTRUCT execută case la roșu, fundații, structuri din beton armat, cofrare și zidărie în Oltenia. Sistem Doka propriu. Solicită ofertă.',
-      path: '/',
-    })
-    return {
-      ...h,
-      links: [...h.links, { rel: 'preload', as: 'image', imageSrcSet: srcSet(HERO, HERO_WIDTHS), imageSizes: '100vw', fetchPriority: 'high' }],
-    }
-  },
+  head: () => pageHead({
+    title: 'URBISCOR CONSTRUCT | Construcții Case la Roșu în Oltenia',
+    description:
+      'URBISCOR CONSTRUCT execută case la roșu, fundații, structuri din beton armat, cofrare și zidărie în Oltenia. Sistem Doka propriu. Solicită ofertă.',
+    path: '/',
+  }),
   component: Home,
 })
 
@@ -76,6 +70,7 @@ function Hero() {
         src={HERO}
         alt="Casă în construcție în stadiul la roșu, cu structură din beton armat, cofraj Doka, popi metalici și schelă"
         widths={HERO_WIDTHS}
+        quality={HERO_QUALITY}
         priority
         className="absolute inset-0 -z-10 h-full w-full object-cover object-[62%_center]"
       />

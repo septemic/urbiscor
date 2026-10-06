@@ -4,6 +4,10 @@ import { Lightbox } from './Lightbox'
 import { Picture } from './Picture'
 import { Icon } from './Icons'
 
+const gridSizes = '(min-width: 1240px) 382px, (min-width: 1024px) calc((100vw - 96px) / 3), (min-width: 768px) calc((100vw - 80px) / 2), (min-width: 640px) calc((100vw - 52px) / 2), calc(100vw - 40px)'
+const featureSizes = '(min-width: 1240px) 282px, (min-width: 1024px) calc((100vw - 112px) / 4), (min-width: 768px) calc((100vw - 80px) / 2), (min-width: 640px) calc((100vw - 52px) / 2), calc(100vw - 40px)'
+const wideFeatureSizes = '(min-width: 1240px) 580px, (min-width: 1024px) calc((100vw - 80px) / 2), (min-width: 768px) calc(100vw - 64px), calc(100vw - 40px)'
+
 /**
  * Filterable portfolio grid with lightbox.
  * `layout="feature"` = large editorial tiles (homepage); `"grid"` = even grid (/proiecte).
@@ -60,8 +64,10 @@ export function Gallery({ layout = 'grid', limit, dark }: { layout?: 'feature' |
                 <Picture
                   src={p.src}
                   alt={p.alt}
-                  widths={[480, 768, 1080, 1440]}
-                  sizes={layout === 'feature' && i === 0 ? '(min-width: 1024px) 50vw, 100vw' : '(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw'}
+                  widths={[320, 480, 640, 768, 1080, 1440]}
+                  sizes={layout === 'feature'
+                    ? i === 0 || i >= 5 ? wideFeatureSizes : featureSizes
+                    : gridSizes}
                   className="h-full w-full object-cover"
                 />
                 <span className="absolute inset-0 bg-gradient-to-t from-night/80 via-night/0 to-night/0 opacity-90 transition-opacity group-hover:opacity-100" aria-hidden="true" />
