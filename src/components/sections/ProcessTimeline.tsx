@@ -11,7 +11,7 @@ export const processSteps = [
 
 export function ProcessTimeline() {
   return (
-    <section id="proces" aria-labelledby="proces-titlu" className="bg-white py-20 md:py-28">
+    <section id="proces" aria-labelledby="proces-titlu" className="bg-surface py-20 md:py-28">
       <div className="container-x">
         <SectionHeading id="proces-titlu" eyebrow="Proces" title="Cum lucrăm" subtitle="Fiecare proiect trece prin aceleași etape clare, de la prima discuție până la predarea lucrării." />
 
@@ -25,7 +25,7 @@ export function ProcessTimeline() {
               data-reveal
               style={{ ['--reveal-delay' as string]: `${i * 80}ms` }}
             >
-              <span className="absolute -left-[23px] top-0 inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white font-display text-sm font-extrabold text-ink md:relative md:left-0 md:mb-6">
+              <span className="absolute -left-[23px] top-0 inline-flex h-11 w-11 items-center justify-center rounded-full border border-line bg-surface font-display text-sm font-extrabold text-foreground md:relative md:left-0 md:mb-6">
                 <span className="absolute inset-1 rounded-full border border-gold/60" aria-hidden="true" />
                 {String(i + 1).padStart(2, '0')}
               </span>

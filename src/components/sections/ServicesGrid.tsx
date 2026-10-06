@@ -16,9 +16,9 @@ export function ServicesGrid() {
 
         <ul className="mt-12 grid gap-px overflow-hidden rounded border border-line bg-line sm:grid-cols-2 lg:grid-cols-3 md:mt-16">
           {serviceCards.map((s, i) => (
-            <li key={s.n} className="group relative bg-white p-7 transition-colors duration-300 hover:bg-night md:p-9" data-reveal style={{ ['--reveal-delay' as string]: `${(i % 3) * 80}ms` }}>
+            <li key={s.n} className="group relative bg-surface p-7 transition-colors duration-300 hover:bg-night md:p-9" data-reveal style={{ ['--reveal-delay' as string]: `${(i % 3) * 80}ms` }}>
               <div className="flex items-start justify-between">
-                <Icon name={s.icon} size={44} className="text-ink transition-colors duration-300 group-hover:text-gold" />
+                <Icon name={s.icon} size={44} className="text-foreground transition-colors duration-300 group-hover:text-gold" />
                 <span className="font-display text-sm font-bold tracking-widest text-gold-deep transition-colors group-hover:text-gold">{s.n}</span>
               </div>
               <h3 className="mt-8 text-xl font-extrabold leading-snug transition-colors group-hover:text-white">{s.title}</h3>

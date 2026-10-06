@@ -38,14 +38,14 @@ export function QuoteForm({ source }: { source: string }) {
 
   if (status === 'success') {
     return (
-      <div role="status" className="ticks flex min-h-[420px] flex-col items-start justify-center border border-line bg-white p-8 md:p-12">
+      <div role="status" className="ticks flex min-h-[420px] flex-col items-start justify-center border border-line bg-surface p-8 md:p-12">
         <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-gold text-ink">
           <Icon name="check" size={28} />
         </span>
         <h3 className="mt-6 text-2xl font-extrabold">Mulțumim! Solicitarea a fost trimisă.</h3>
         <p className="mt-3 max-w-md leading-relaxed text-steel">
           Te contactăm telefonic pentru detalii despre proiect. Dacă dorești să discutăm mai repede, sună-ne la{' '}
-          <a href={site.phoneHref} className="font-semibold text-ink underline underline-offset-4">
+          <a href={site.phoneHref} className="font-semibold text-foreground underline underline-offset-4">
             {site.phoneDisplay}
           </a>
           .
@@ -64,7 +64,7 @@ export function QuoteForm({ source }: { source: string }) {
       data-netlify="true"
       netlify-honeypot="bot-field"
       onSubmit={onSubmit}
-      className="ticks border border-line bg-white p-6 sm:p-8 md:p-10"
+      className="ticks border border-line bg-surface p-6 sm:p-8 md:p-10"
       aria-describedby="oferta-nota"
     >
       <input type="hidden" name="form-name" value="oferta" />
@@ -146,14 +146,14 @@ export function QuoteForm({ source }: { source: string }) {
 
       <div className="mt-6 space-y-4">
         <label className="flex cursor-pointer items-start gap-3 text-[0.95rem]">
-          <input type="checkbox" name="proiect_tehnic" value="Da" className="mt-0.5 h-5 w-5 shrink-0 accent-[#16191D]" />
+          <input type="checkbox" name="proiect_tehnic" value="Da" className="mt-0.5 h-5 w-5 shrink-0 accent-gold-deep" />
           <span>Am proiectul tehnic</span>
         </label>
         <label className="flex cursor-pointer items-start gap-3 text-sm text-steel">
-          <input type="checkbox" name="acord_gdpr" value="Da" required className="mt-0.5 h-5 w-5 shrink-0 accent-[#16191D]" />
+          <input type="checkbox" name="acord_gdpr" value="Da" required className="mt-0.5 h-5 w-5 shrink-0 accent-gold-deep" />
           <span>
             Sunt de acord ca datele trimise să fie folosite pentru a fi contactat în legătură cu solicitarea mea, conform{' '}
-            <Link to="/politica-de-confidentialitate" className="font-medium text-ink underline underline-offset-4">
+            <Link to="/politica-de-confidentialitate" className="font-medium text-foreground underline underline-offset-4">
               Politicii de confidențialitate
             </Link>
             . <span className="text-gold-deep">*</span>
@@ -162,7 +162,7 @@ export function QuoteForm({ source }: { source: string }) {
       </div>
 
       {status === 'error' && (
-        <p role="alert" className="mt-6 border-l-2 border-red-700 bg-red-50 px-4 py-3 text-sm text-red-900">
+        <p role="alert" className="mt-6 border-l-2 border-error-border bg-error-surface px-4 py-3 text-sm text-error-text">
           Solicitarea nu a putut fi trimisă. Încearcă din nou sau contactează-ne direct la{' '}
           <a href={site.phoneHref} className="font-semibold underline">
             {site.phoneDisplay}

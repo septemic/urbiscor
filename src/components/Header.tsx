@@ -4,6 +4,7 @@ import { site } from '@/config/site'
 import { Icon } from './Icons'
 import { Logo } from './Logo'
 import { QuoteLink } from './QuoteLink'
+import { ThemeToggle } from './ThemeToggle'
 import { navItems } from './nav'
 import { setSmoothScrollLock } from '@/lib/smoothScroll'
 
@@ -59,7 +60,7 @@ export function Header() {
           solid ? 'bg-night/95 shadow-[0_1px_0_rgb(255_255_255/0.06)] backdrop-blur-md' : 'bg-transparent'
         }`}
       >
-        <div className={`container-x flex items-center justify-between gap-6 transition-[height] duration-300 ${scrolled ? 'h-[68px]' : 'h-[76px] lg:h-[88px]'}`}>
+        <div className={`container-x flex items-center justify-between gap-3 transition-[height] duration-300 ${scrolled ? 'h-[68px]' : 'h-[76px] lg:h-[88px]'}`}>
           <Link to="/" className="shrink-0" aria-label={`${site.name} — pagina principală`}>
             <Logo />
           </Link>
@@ -72,7 +73,7 @@ export function Header() {
                     to={item.to}
                     hash={item.hash}
                     aria-current={isActive(item.to, item.hash) ? 'page' : undefined}
-                    className="relative block px-3.5 py-2 text-[0.92rem] font-medium text-white/80 transition-colors hover:text-white aria-[current=page]:text-white after:absolute after:inset-x-3.5 after:-bottom-0.5 after:h-[2px] after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
+                    className="relative block px-2.5 py-2 text-[0.92rem] font-medium text-white/80 transition-colors hover:text-white aria-[current=page]:text-white after:absolute after:inset-x-2.5 after:-bottom-0.5 after:h-[2px] after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 hover:after:scale-x-100 aria-[current=page]:after:scale-x-100"
                   >
                     {item.label}
                   </Link>
@@ -81,12 +82,13 @@ export function Header() {
             </ul>
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 xl:gap-3">
             <a href={site.phoneHref} className="hidden items-center gap-2 text-sm font-semibold text-white/90 hover:text-gold xl:inline-flex">
               <Icon name="phone" size={18} className="text-gold" />
               {site.phoneDisplay}
             </a>
             <QuoteLink className="btn btn-gold hidden !min-h-11 !px-5 text-sm sm:inline-flex">Solicită ofertă</QuoteLink>
+            <ThemeToggle />
             <button
               ref={menuButton}
               type="button"

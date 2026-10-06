@@ -21,7 +21,7 @@ export function WhyUs() {
         </div>
         <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-7 lg:self-center">
           {reasons.map((r, i) => (
-            <li key={r.title} className="ticks rounded border border-line bg-white p-7 transition-transform duration-300 hover:-translate-y-1 md:p-8" data-reveal style={{ ['--reveal-delay' as string]: `${i * 80}ms` }}>
+            <li key={r.title} className="ticks rounded border border-line bg-surface p-7 transition-transform duration-300 hover:-translate-y-1 md:p-8" data-reveal style={{ ['--reveal-delay' as string]: `${i * 80}ms` }}>
               <Icon name={r.icon} size={40} className="text-gold-deep" />
               <h3 className="mt-6 text-xl font-extrabold">{r.title}</h3>
               <p className="mt-2 leading-relaxed text-steel">{r.text}</p>

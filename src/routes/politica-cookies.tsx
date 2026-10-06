@@ -15,7 +15,7 @@ export const Route = createFileRoute('/politica-cookies')({
 
 function CookiesPage() {
   return (
-    <LegalPage title="Politica cookies" updated="5 octombrie 2026">
+    <LegalPage title="Politica cookies" updated="6 octombrie 2026">
       <p>
         Cookie-urile sunt fișiere mici stocate în browser atunci când vizitezi un site. Această pagină explică ce folosește site-ul {site.name}.
       </p>
@@ -32,6 +32,13 @@ function CookiesPage() {
         Furnizorul de găzduire (Netlify) poate folosi elemente tehnice strict necesare pentru livrarea în siguranță a paginilor și pentru protecția
         formularului împotriva mesajelor automate. Acestea nu servesc la identificarea ta în scopuri de marketing și nu necesită consimțământ, conform
         legislației aplicabile.
+      </p>
+
+      <h2>Preferința de afișare</h2>
+      <p>
+        Site-ul urmează implicit modul luminos sau întunecat al dispozitivului. Dacă schimbi modul folosind butonul din antet, alegerea este
+        păstrată doar în browserul tău, în stocarea locală (localStorage), pentru vizitele următoare. Această preferință nu este trimisă către server
+        și nu este folosită pentru urmărire. O poți elimina ștergând datele site-ului din setările browserului.
       </p>
 
       <h2>Linkuri externe</h2>

@@ -5,7 +5,7 @@ export function LegalPage({ title, updated, children }: { title: string; updated
   return (
     <>
       <PageHero eyebrow="Informații legale" title={title} intro={`Ultima actualizare: ${updated}`} />
-      <section className="bg-white py-16 md:py-24">
+      <section className="bg-surface py-16 md:py-24">
         <div className="container-x">
           <article className="prose-legal max-w-3xl">{children}</article>
         </div>

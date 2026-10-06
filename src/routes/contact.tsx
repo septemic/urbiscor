@@ -30,7 +30,7 @@ function ContactPage() {
         intro="Sună, scrie pe WhatsApp sau completează formularul. Ofertarea este gratuită."
       />
 
-      <section aria-label="Contact rapid" className="border-b border-line bg-white">
+      <section aria-label="Contact rapid" className="border-b border-line bg-surface">
         <ul className="container-x grid divide-y divide-line md:grid-cols-3 md:divide-x md:divide-y-0">
           <li>
             <a href={site.phoneHref} className="group flex items-center gap-5 py-8 md:px-8 md:first:pl-0">

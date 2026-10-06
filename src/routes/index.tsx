@@ -43,7 +43,7 @@ function Home() {
       <ServicesGrid />
       <Equipment />
       <ProcessTimeline />
-      <section id="proiecte" aria-labelledby="proiecte-titlu" className="bg-white pb-20 md:pb-28">
+      <section id="proiecte" aria-labelledby="proiecte-titlu" className="bg-surface pb-20 md:pb-28">
         <div className="container-x">
           <div className="flex flex-col justify-between gap-8 border-t border-line pt-20 md:flex-row md:items-end md:pt-28">
             <SectionHeading

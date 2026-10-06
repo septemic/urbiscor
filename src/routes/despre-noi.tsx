@@ -38,7 +38,7 @@ function AboutPage() {
         image="/img/santier.jpg"
       />
 
-      <section aria-labelledby="despre-titlu" className="bg-white py-20 md:py-28">
+      <section aria-labelledby="despre-titlu" className="bg-surface py-20 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-20">
           <div className="lg:col-span-7" data-reveal>
             <p className="eyebrow">URBISCOR CONSTRUCT</p>
@@ -71,7 +71,7 @@ function AboutPage() {
           </div>
           <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {principles.map((p, i) => (
-              <li key={p.title} className="rounded border border-line bg-white p-7 transition-transform duration-300 hover:-translate-y-1" data-reveal style={{ ['--reveal-delay' as string]: `${i * 80}ms` }}>
+              <li key={p.title} className="rounded border border-line bg-surface p-7 transition-transform duration-300 hover:-translate-y-1" data-reveal style={{ ['--reveal-delay' as string]: `${i * 80}ms` }}>
                 <Icon name={p.icon} size={40} className="text-gold-deep" />
                 <h3 className="mt-6 text-lg font-extrabold">{p.title}</h3>
                 <p className="mt-2 leading-relaxed text-steel">{p.text}</p>

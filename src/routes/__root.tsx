@@ -2,6 +2,7 @@ import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/r
 import { site } from '@/config/site'
 import { businessSchema } from '@/lib/structuredData'
 import { pageHead } from '@/lib/seo'
+import { themeBoot } from '@/lib/theme'
 import { FloatingContact } from '@/components/FloatingContact'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
@@ -48,6 +49,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ro" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
         <script dangerouslySetInnerHTML={{ __html: revealBoot }} />
         <HeadContent />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema()) }} />
