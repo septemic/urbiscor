@@ -45,8 +45,8 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 - All seven marketing routes are prerendered during `pnpm build`. Netlify serves
   their HTML from the CDN; its adapter retains SSR for unmatched routes. Flat
   HTML output preserves clean URLs such as `/contact`.
-- `Picture` prefers AVIF, with the CDN-negotiated image as a fallback. Keep a
-  priority image's quality, widths and sizes in sync with its typed preload;
+- `Picture` prefers AVIF, with the CDN-negotiated image as a fallback. It builds
+  each priority image's preload from the same quality, widths and sizes;
   the homepage hero uses one AVIF request. Gallery sizes reflect its actual grid.
 - Fonts keep the original Latin files and use small Romanian supplements,
   including variable weights and legacy cedillas. To regenerate supplements
