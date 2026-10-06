@@ -1,5 +1,6 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { Link, createFileRoute } from '@tanstack/react-router'
 import { serviceDetails } from '@/data/services'
+import { servicePaths } from '@/config/servicePaths'
 import { Icon } from '@/components/Icons'
 import { PageHero } from '@/components/PageHero'
 import { Picture } from '@/components/Picture'
@@ -11,7 +12,7 @@ import { pageHead } from '@/lib/seo'
 export const Route = createFileRoute('/servicii')({
   head: () =>
     pageHead({
-      title: 'Servicii construcții case la roșu, fundații și structuri | URBISCOR CONSTRUCT',
+      title: 'Servicii de construcții în Oltenia | URBISCOR CONSTRUCT',
       description:
         'Construcții la roșu, fundații, structuri din beton armat, cofrare cu sistem Doka, turnare beton și zidărie BCA sau cărămidă. Execuție organizată în Oltenia.',
       path: '/servicii',
@@ -77,6 +78,11 @@ function ServicesPage() {
                   Solicită ofertă pentru {s.title.toLowerCase().replace('sistem doka propriu', 'cofrare Doka')}
                   <Icon name="arrow" size={18} className="arrow" />
                 </QuoteLink>
+                <p className="mt-5">
+                  <Link to={servicePaths[s.id]} className="font-semibold text-gold-deep underline underline-offset-4">
+                    Detalii despre {s.title.toLocaleLowerCase('ro')}
+                  </Link>
+                </p>
               </div>
             </div>
           </section>
