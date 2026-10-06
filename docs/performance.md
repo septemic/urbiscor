@@ -102,3 +102,19 @@ TypeScript, the production build and browser checks cover mobile navigation,
 dark mode, native/fallback header progress, smooth scrolling and idle-frame
 behavior, gallery filters/lightbox controls, and an intercepted form POST.
 No additional real email was sent.
+
+## Floating social rail
+
+The desktop Facebook/Instagram rail adds approximately **545 bytes** to the
+compressed initial HTML and eight JavaScript assets in the compared builds.
+It reuses existing inline SVGs and profile URLs. There are no additional
+requests, fonts, dependencies, third-party SDKs, scroll observers, timers or
+animation loops. The Escape-key listener exists only while a label is active.
+Hover/focus motion uses short CSS transitions and respects reduced motion.
+
+After this change, Lighthouse 13.5.0 with the same warmed verified-HTTPS bridge
+measured **97 mobile / 100 desktop**, with zero layout shift. These are lab
+measurements, not a fresh hosted PageSpeed score. Browser checks cover native
+new-tab links, 44px targets, hoverable and Escape-dismissible labels, keyboard
+focus, responsive outer margins, mobile/touch hiding, dark mode, reduced motion,
+no-JavaScript links and zero idle animation frames.
