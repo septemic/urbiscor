@@ -15,7 +15,7 @@ export const Route = createFileRoute('/politica-de-confidentialitate')({
 
 function PrivacyPage() {
   return (
-    <LegalPage title="Politica de confidențialitate" updated="5 octombrie 2026">
+    <LegalPage title="Politica de confidențialitate" updated="6 octombrie 2026">
       <p>
         Această politică explică modul în care {site.name} („noi”) prelucrează datele cu caracter personal ale persoanelor care folosesc acest site,
         în conformitate cu Regulamentul (UE) 2016/679 („GDPR”) și cu legislația română aplicabilă.
@@ -54,6 +54,10 @@ function PrivacyPage() {
         <li>
           <strong>Netlify, Inc.</strong> — furnizorul de găzduire al site-ului, care stochează mesajele trimise prin formular. Transferul în afara
           Spațiului Economic European se face pe baza garanțiilor prevăzute de GDPR (de exemplu, clauze contractuale standard).
+        </li>
+        <li>
+          <strong>ImprovMX și Google (Gmail)</strong> — notificările cu datele trimise prin formular sunt redirecționate prin ImprovMX către căsuța
+          noastră de email Gmail, pentru a putea răspunde solicitării tale.
         </li>
         <li>
           <strong>WhatsApp (Meta)</strong> — doar dacă alegi să ne scrii pe WhatsApp; în acest caz se aplică și politica de confidențialitate WhatsApp.

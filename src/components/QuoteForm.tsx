@@ -61,6 +61,7 @@ export function QuoteForm({ source }: { source: string }) {
     <form
       name="oferta"
       method="POST"
+      action="/__forms.html"
       data-netlify="true"
       netlify-honeypot="bot-field"
       onSubmit={onSubmit}

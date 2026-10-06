@@ -40,6 +40,24 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 - **Theme colors:** semantic surface/text colors live in `src/styles.css`; `src/lib/theme.ts` initializes the theme before rendering, and `src/components/ThemeToggle.tsx` handles saved, system, and cross-tab changes. Keep fixed `ink`/white colors for gold buttons and dark image overlays; use `surface`/`foreground` for theme-aware content.
 - **Header progress and sections:** `src/hooks/useHeaderScroll.ts` owns observer lifecycle and the older-browser progress fallback. `sectionId` in `src/components/nav.ts` maps page sections to nav links; unnamed sections inherit the preceding link. Fill and pulse styles live in `src/styles.css`; reduced motion retains progress but disables pulses.
 
+## Contact form email notifications
+
+The `oferta` form submits to `/__forms.html` and is stored by Netlify Forms. An
+active Netlify email notification for `submission_created` sends new enquiries
+to `contact@urbiscor.ro` with the subject
+`Solicitare de ofertă · URBISCOR CONSTRUCT`. ImprovMX forwards mail for that alias
+to the existing business Gmail inbox.
+
+Manage notifications in Netlify under **Forms → Submission notifications**.
+Manage the alias and forwarding destination in
+ImprovMX. The notification is a site setting that persists across deployments;
+email delivery uses Netlify's notification service and the existing ImprovMX MX
+records. The frontend uses Netlify Forms rather than SMTP credentials.
+
+Notifications apply to verified submissions. If an expected enquiry does not
+arrive, check the form's **Spam submissions** list in Netlify as well as Gmail's
+spam folder, and mark legitimate enquiries as verified.
+
 ## Publishing when the free-plan build credits are used up
 
 The free plan is credit-based. When a month's credits are gone, Netlify skips
@@ -84,4 +102,3 @@ Notes:
 
 - Replace the illustrative photos with real URBISCOR CONSTRUCT site photos.
 - Add the company's legal details (CUI, registered office, email) to the privacy policy, and have it reviewed.
-- Turn on email notifications for form submissions in Netlify (Project configuration → Notifications → Form submission notifications).
