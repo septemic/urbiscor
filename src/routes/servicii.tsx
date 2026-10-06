@@ -34,11 +34,11 @@ function ServicesPage() {
       />
 
       {/* Quick index */}
-      <nav aria-label="Cuprins servicii" className="sticky top-[68px] z-30 border-b border-line bg-white/95 backdrop-blur">
+      <nav aria-label="Cuprins servicii" className="sticky top-[68px] z-30 border-b border-line bg-surface/95 backdrop-blur">
         <ul className="container-x flex gap-1 overflow-x-auto py-3">
           {serviceDetails.map((s) => (
             <li key={s.id} className="shrink-0">
-              <a href={`#${s.id}`} className="block rounded px-3 py-2 text-sm font-semibold text-steel transition-colors hover:bg-concrete hover:text-ink">
+              <a href={`#${s.id}`} className="block rounded px-3 py-2 text-sm font-semibold text-steel transition-colors hover:bg-concrete hover:text-foreground">
                 {s.title}
               </a>
             </li>
@@ -46,7 +46,7 @@ function ServicesPage() {
         </ul>
       </nav>
 
-      <div className="bg-white">
+      <div className="bg-surface">
         {serviceDetails.map((s, i) => (
           <section key={s.id} id={s.id} aria-labelledby={`${s.id}-titlu`} className={`scroll-mt-36 py-16 md:py-24 ${i % 2 === 1 ? 'bg-concrete' : ''}`}>
             <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-20">
@@ -64,7 +64,7 @@ function ServicesPage() {
                   {s.title}
                 </h2>
                 <p className="mt-5 text-lg leading-relaxed text-steel">{s.intro}</p>
-                <h3 className="mt-8 font-display text-xs font-bold uppercase tracking-[0.22em] text-ink">Ce include lucrarea</h3>
+                <h3 className="mt-8 font-display text-xs font-bold uppercase tracking-[0.22em] text-foreground">Ce include lucrarea</h3>
                 <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                   {s.includes.map((x) => (
                     <li key={x} className="flex items-start gap-3 text-[0.95rem] leading-snug">

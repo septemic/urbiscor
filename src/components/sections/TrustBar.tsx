@@ -9,7 +9,7 @@ const items: { icon: IconName; label: string; text: string }[] = [
 
 export function TrustBar() {
   return (
-    <section aria-label="Avantaje principale" className="relative z-10 border-b border-line bg-white">
+    <section aria-label="Avantaje principale" className="relative z-10 border-b border-line bg-surface">
       <div className="container-x">
         <ul className="grid grid-cols-2 lg:grid-cols-4">
           {items.map((it, i) => (

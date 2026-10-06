@@ -26,7 +26,7 @@ function ProjectsPage() {
         intro="Fundații, structuri din beton armat, cofraje și zidărie — etapele prin care trece o casă la roșu. Apasă pe orice imagine pentru a o vedea mărită."
         image="/img/casa-rosu.jpg"
       />
-      <section aria-label="Galerie lucrări" className="bg-white py-16 md:py-24">
+      <section aria-label="Galerie lucrări" className="bg-surface py-16 md:py-24">
         <div className="container-x">
           <Gallery layout="grid" />
           <div className="mt-14 flex flex-col items-start justify-between gap-6 rounded border border-line bg-concrete p-7 md:flex-row md:items-center md:p-9" data-reveal>

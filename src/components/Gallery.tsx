@@ -35,7 +35,7 @@ export function Gallery({ layout = 'grid', limit, dark }: { layout?: 'feature' |
             className={`h-10 shrink-0 rounded border px-4 text-sm font-semibold transition-colors ${
               dark
                 ? 'border-white/15 text-white/75 hover:border-white/40 hover:text-white aria-pressed:border-gold aria-pressed:bg-gold aria-pressed:text-ink'
-                : 'border-line text-steel hover:border-ink hover:text-ink aria-pressed:border-ink aria-pressed:bg-ink aria-pressed:text-white'
+                : 'border-line text-steel hover:border-foreground hover:text-foreground aria-pressed:border-foreground aria-pressed:bg-foreground aria-pressed:text-surface'
             }`}
           >
             {f}
