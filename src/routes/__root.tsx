@@ -1,4 +1,4 @@
-import { HeadContent, Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
+import { Link, Outlet, Scripts, createRootRoute } from '@tanstack/react-router'
 import { site } from '@/config/site'
 import { businessSchema } from '@/lib/structuredData'
 import { pageHead } from '@/lib/seo'
@@ -10,6 +10,7 @@ import { Header } from '@/components/Header'
 import { Icon } from '@/components/Icons'
 import { RevealObserver } from '@/components/Reveal'
 import { SmoothScroll } from '@/components/SmoothScroll'
+import { PageHead } from '@/components/PageHead'
 
 import '../styles.css'
 
@@ -53,7 +54,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBoot }} />
         <script dangerouslySetInnerHTML={{ __html: revealBoot }} />
-        <HeadContent />
+        <PageHead />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema()) }} />
       </head>
       <body>

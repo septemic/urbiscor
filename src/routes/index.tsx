@@ -17,7 +17,7 @@ import { pageHead } from '@/lib/seo'
 
 const HERO = '/img/hero.jpg'
 const HERO_WIDTHS = [640, 960, 1376]
-const HERO_QUALITY = 55
+const HERO_QUALITY = 40
 
 export const Route = createFileRoute('/')({
   head: () => pageHead({

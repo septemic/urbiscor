@@ -44,16 +44,21 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 
 - All seven marketing routes are prerendered during `pnpm build`. Netlify serves
   their HTML from the CDN; its adapter retains SSR for unmatched routes. Flat
-  HTML output preserves clean URLs such as `/contact`.
+  HTML output preserves clean URLs such as `/contact`. The small shared
+  stylesheet is inlined through TanStack Start so it can paint with the HTML
+  without another blocking request. `PageHead` lowers module-preload priority
+  so fonts and the hero can load first; the client entry gives the static HTML
+  a paint opportunity before hydration, with immediate hydration in hidden tabs.
 - `Picture` prefers AVIF, with the CDN-negotiated image as a fallback. It builds
   each priority image's preload from the same quality, widths and sizes;
   the homepage hero uses one AVIF request. Gallery sizes reflect its actual grid.
-- Fonts keep the original Latin files and use small Romanian supplements,
-  including variable weights and legacy cedillas. To regenerate supplements
+- Fonts keep Latin and Romanian coverage, including legacy cedillas, with
+  variable weights restricted to the site's used 400–800 range. To regenerate them
   after updating Fontsource: install `fonttools[woff]==4.61.1` in a Python
   environment, then run `python scripts/subset-fonts.py`. The generated fonts
   and licenses are committed, so production builds do not need Python. Update
-  the subsets and CSS unicode ranges if another language is added.
+  the subsets and CSS unicode ranges if another language is added; regenerate
+  and widen the weight range if a lighter or heavier text style is introduced.
 - Lenis loads only for visitors with a mouse or trackpad who permit motion.
   Animation frames run during smooth wheel scrolling and stop when it settles.
   Touch scrolling stays native; menu and lightbox locks also stop the frames.
