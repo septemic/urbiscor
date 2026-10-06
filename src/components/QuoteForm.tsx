@@ -176,7 +176,7 @@ export function QuoteForm({ source }: { source: string }) {
 
       <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <button type="submit" disabled={status === 'sending'} className="btn btn-gold w-full disabled:cursor-wait disabled:opacity-70 sm:w-auto">
-          {status === 'sending' ? 'Se trimite...' : 'Trimite solicitarea'}
+          {status === 'sending' ? 'Se trimite...' : 'Solicită oferta gratuită'}
           <Icon name="arrow" size={18} className="arrow" />
         </button>
         <p id="oferta-nota" className="text-xs text-steel">

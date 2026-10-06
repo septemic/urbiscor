@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react'
-import { site } from '@/config/site'
+import { site, whatsappMessage } from '@/config/site'
 import { socialProfiles } from '@/config/social'
-import { Icon } from './Icons'
+import { Icon, WhatsAppIcon } from './Icons'
 
-const profiles = socialProfiles.filter((profile) => profile.url)
+const actions = [
+  { label: 'WhatsApp', icon: 'whatsapp' as const, url: whatsappMessage() },
+  ...socialProfiles.filter((profile) => profile.url),
+]
 
 /** Native links and CSS motion; tooltip state changes only on interaction. */
-export function SocialRail() {
+export function ContactRail() {
   const [active, setActive] = useState(false)
   const [dismissed, setDismissed] = useState(false)
 
@@ -25,12 +28,10 @@ export function SocialRail() {
     setActive(true)
     setDismissed(false)
   }
-  if (!profiles.length) return null
-
   return (
     <nav
-      className="social-rail"
-      aria-label="Urmărește-ne pe rețelele sociale"
+      className="contact-rail"
+      aria-label="Contact și rețele sociale"
       onPointerLeave={(event) => {
         if (!event.currentTarget.contains(document.activeElement)) setActive(false)
       }}
@@ -39,27 +40,33 @@ export function SocialRail() {
       }}
     >
       <ul>
-        {profiles.map((profile) => (
-          <li key={profile.label}>
+        {actions.map((action) => (
+          <li key={action.label} className={action.icon === 'whatsapp' ? 'contact-rail-primary' : 'contact-rail-social'}>
             <a
-              href={profile.url}
+              href={action.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${site.name} pe ${profile.label} (se deschide într-o filă nouă)`}
-              className="social-rail-link"
+              aria-label={`${action.icon === 'whatsapp' ? 'Discută proiectul pe WhatsApp' : `${site.name} pe ${action.label}`} (se deschide într-o filă nouă)`}
+              className="contact-rail-link"
               data-tooltip-dismissed={dismissed || undefined}
               onPointerEnter={activate}
               onFocus={activate}
             >
-              <Icon
-                name={profile.icon}
-                size={24}
-                fill={profile.icon === 'facebook' ? 'currentColor' : 'none'}
-                strokeWidth={profile.icon === 'facebook' ? 0 : 1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <span className="social-rail-label" aria-hidden="true">{profile.label}</span>
+              {action.icon === 'whatsapp' ? (
+                <WhatsAppIcon size={24} viewBox="-1 -1 26 26" />
+              ) : (
+                <Icon
+                  name={action.icon}
+                  size={24}
+                  fill={action.icon === 'facebook' ? 'currentColor' : 'none'}
+                  strokeWidth={action.icon === 'facebook' ? 0 : 1.75}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              )}
+              <span className="contact-rail-label" aria-hidden="true">
+                {action.icon === 'whatsapp' ? 'Discută pe WhatsApp' : action.label}
+              </span>
             </a>
           </li>
         ))}

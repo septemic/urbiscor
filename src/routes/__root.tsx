@@ -11,7 +11,6 @@ import { Icon } from '@/components/Icons'
 import { RevealObserver } from '@/components/Reveal'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { PageHead } from '@/components/PageHead'
-import { SocialRail } from '@/components/SocialRail'
 
 import '../styles.css'
 
@@ -77,7 +76,6 @@ function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <SocialRail />
       <FloatingContact />
       {/* Space for the mobile contact bar so it never covers the footer */}
       <div className="h-16 md:hidden" aria-hidden="true" />
