@@ -11,7 +11,7 @@ const reasons: { icon: IconName; title: string; text: string }[] = [
 
 export function WhyUs() {
   return (
-    <section aria-labelledby="de-ce-titlu" className="bg-concrete py-20 md:py-28">
+    <section id="despre-noi" aria-labelledby="de-ce-titlu" className="bg-concrete py-20 md:py-28">
       <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-5">
           <SectionHeading id="de-ce-titlu" eyebrow="Seriozitate" title="De ce URBISCOR CONSTRUCT?" subtitle="O casă se construiește o singură dată. Structura trebuie executată corect, etapă cu etapă." />
