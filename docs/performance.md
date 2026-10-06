@@ -20,9 +20,9 @@ will vary with the test location and runtime conditions.
 
 | Metric | Before | After |
 | --- | ---: | ---: |
-| Mobile performance | 83 | 96 |
+| Mobile performance | 83 | 95 |
 | Mobile first contentful paint | 3.1 s | 2.0 s |
-| Mobile largest contentful paint | 3.7 s | 2.4 s |
+| Mobile largest contentful paint | 3.7 s | 2.7 s |
 | Mobile layout shift | 0 | 0 |
 | Desktop performance | 99 | 100 |
 | Desktop largest contentful paint | 0.7 s | 0.6 s |
@@ -30,7 +30,8 @@ will vary with the test location and runtime conditions.
 | 960px hero image | 83,478 bytes (WebP, q72) | 56,264 bytes (AVIF, q55) |
 
 The first optimized mobile run scored 91 (FCP 2.1 s, LCP 2.9 s); the follow-up
-scored 96. Scores and main-thread timing fluctuate, while the resource-size
+scored 96. The final shared-preload implementation scored 95 (FCP 2.0 s,
+LCP 2.7 s) and 100 on desktop. Scores and main-thread timing fluctuate, while the resource-size
 reductions are deterministic: 54% fewer font bytes and 33% fewer hero bytes.
 
 ## Verification
