@@ -20,6 +20,9 @@ const config = defineConfig({
     // HTML from the CDN; the Netlify adapter keeps SSR for unmatched routes.
     tanstackStart({
       prerender: { enabled: true, autoSubfolderIndex: false, crawlLinks: false, failOnError: true },
+      // This site's small stylesheet can paint with the HTML, without a
+      // render-blocking network round trip on slower mobile connections.
+      server: { build: { inlineCss: true } },
     }),
     viteReact(),
   ],

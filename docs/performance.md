@@ -51,3 +51,54 @@ reductions are deterministic: 54% fewer font bytes and 33% fewer hero bytes.
 
 Font regeneration and deployment details are in the README. For an independent
 hosted audit, open [PageSpeed Insights for URBISCOR](https://pagespeed.web.dev/analysis?url=https%3A%2F%2Furbiscor.ro%2F&form_factor=mobile).
+
+## Follow-up: remaining mobile points
+
+The 95-point result was chiefly limited by FCP (2.0 s) and LCP (2.7 s),
+with zero layout shift and little JavaScript blocking. A fresh warmed baseline
+of that production build scored 94 (FCP 2.0 s, LCP 2.9 s), illustrating the
+normal variation between runs. PageSpeed's website and API again rejected
+queries from this environment, so the figures below are Lighthouse lab tests,
+not a confirmed hosted PageSpeed result.
+
+Changes:
+
+- TanStack Start inlines the small shared stylesheet in the generated HTML,
+  eliminating a render-blocking request. HTML plus CSS still transfers roughly
+  the same compressed bytes. This uses the framework's inline-CSS support,
+  including its hydration handling, rather than editing generated HTML.
+- `PageHead` uses the router's public head-tag API and gives module preloads
+  low fetch priority. Critical fonts and the hero retain their priority;
+  JavaScript starts downloading immediately, without a timeout or idle gate.
+- The client entry gives the prerendered page one paint opportunity before
+  hydration using two animation frames. Hidden tabs hydrate immediately.
+  Route content and interactive features remain in place.
+- Variable fonts keep all existing Latin/Romanian glyphs and the site's used
+  400–800 weights. Their four downloads total **63,520 bytes**, down from
+  78,996 (20%). Shaping features remain present. Weight instancing introduces
+  less than one font-unit of advance-width rounding, below 0.01px at 20px.
+- Hero AVIF quality 40 reduces the 960px image from **56,264 to 32,176 bytes**
+  (43%). Mobile and desktop screenshots were reviewed under the original
+  overlays; image framing and layout are preserved.
+
+| Test | Earlier build | Updated build |
+| --- | ---: | ---: |
+| Default simulated mobile score | 94–95 | 97 |
+| Simulated mobile FCP | 2.0 s | 0.9–1.1 s |
+| Simulated mobile LCP | 2.7–2.9 s | 2.6 s |
+| Applied network/CPU throttling score | 98 | 99 |
+| Applied throttling FCP / LCP | 1.8 / 1.8 s | 1.0 / 1.0 s |
+| Applied throttling blocking time | 80 ms | 130 ms |
+| Layout shift, both methods | 0 | 0 |
+| Desktop score | 100 | 100 |
+
+Different throttling methods give different scores and should not be mixed
+into a single before/after comparison. Earlier first paint also starts the
+blocking-time measurement window earlier; the applied-throttling run remains
+within Lighthouse's good threshold. A perfect 100 is not guaranteed across
+test locations, browser versions or CPU conditions.
+
+TypeScript, the production build and browser checks cover mobile navigation,
+dark mode, native/fallback header progress, smooth scrolling and idle-frame
+behavior, gallery filters/lightbox controls, and an intercepted form POST.
+No additional real email was sent.

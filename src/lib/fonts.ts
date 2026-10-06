@@ -1,5 +1,5 @@
-import interLatin from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url'
-import manropeLatin from '@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2?url'
+import interLatin from '@/assets/fonts/inter-latin-wght-normal.woff2?url'
+import manropeLatin from '@/assets/fonts/manrope-latin-wght-normal.woff2?url'
 import interRomanian from '@/assets/fonts/inter-romanian-wght-normal.woff2?url&no-inline'
 import manropeRomanian from '@/assets/fonts/manrope-romanian-wght-normal.woff2?url&no-inline'
 
