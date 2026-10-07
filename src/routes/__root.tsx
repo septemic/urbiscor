@@ -11,6 +11,7 @@ import { Icon } from '@/components/Icons'
 import { RevealObserver } from '@/components/Reveal'
 import { SmoothScroll } from '@/components/SmoothScroll'
 import { PageHead } from '@/components/PageHead'
+import { CookieConsent } from '@/components/CookieConsent'
 
 import '../styles.css'
 
@@ -77,6 +78,7 @@ function Layout() {
       </main>
       <Footer />
       <FloatingContact />
+      <CookieConsent />
       {/* Space for the mobile contact bar so it never covers the footer */}
       <div className="h-16 md:hidden" aria-hidden="true" />
       <RevealObserver />

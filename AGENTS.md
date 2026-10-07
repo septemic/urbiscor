@@ -30,5 +30,5 @@ public/
 - Quote CTAs use `QuoteLink`, which scrolls to `#oferta` on pages that contain the form and otherwise goes to `/contact#oferta`.
 - Form submissions POST url-encoded to `/__forms.html` (not `/`), because the SSR function would intercept `/`.
 - Images are AI-generated illustrative placeholders, flagged `placeholder: true` and labelled on-site. Replace with real photos when available.
-- No tracking/analytics. If any are added, a consent banner must gate them (see `/politica-cookies`).
+- Google Ads quote conversions are consent-gated (`src/lib/googleAds.ts`). Never load the Google tag before an advertising opt-in or send form fields to it. Fire only after a successful `/__forms.html` response. Keep the consent controls and privacy/cookie disclosures in sync; there is no Google Analytics or Facebook Pixel.
 - Social links: empty strings in `site.social` render as non-link "în curând" chips, never broken links.

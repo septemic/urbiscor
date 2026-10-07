@@ -19,7 +19,7 @@ Website for **URBISCOR CONSTRUCT**, a residential construction company building 
 - Tailwind CSS 4 with a small custom design system in `src/styles.css`
 - Netlify Forms for the quote form (`oferta`), Netlify Image CDN for responsive AVIF/WebP images
 - Self-hosted Manrope + Inter variable fonts (no Google Fonts requests)
-- No analytics or tracking scripts, so no cookie banner is needed
+- Google Ads loads only after an explicit advertising opt-in; visitors can refuse or revisit preferences from the footer. No Google Analytics or Facebook Pixel. Form conversion events require the action-specific label; see [docs/google-ads.md](docs/google-ads.md).
 - Light/dark mode toggle in the header; defaults to the system theme and remembers explicit choices in browser local storage. Coordinated palette and icon transitions follow the site's easing and respect reduced motion; saved themes apply immediately on first paint.
 - The fixed header's full-height background tracks page progress with a CSS root scroll timeline. A passive, frame-coalesced fallback runs only when scroll timelines are unsupported; IntersectionObserver updates section links and their brief gold pulse without per-scroll React renders or backdrop blur.
 - WhatsApp leads a unified contact rail with Facebook and Instagram in the outer margin on wide desktop screens (1280px+, with a mouse/trackpad and at least 400px of height). Matching 44px anthracite controls reuse existing SVGs and configured links, with gold hover/focus accents and reduced-motion support. Labels stay open under the pointer and dismiss with Escape; smaller/touch screens retain a WhatsApp corner control or the mobile contact bar, plus footer social links. It adds no startup requests, scroll observers or animation loop.
