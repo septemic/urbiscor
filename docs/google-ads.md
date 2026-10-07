@@ -4,24 +4,28 @@ The website's Google tag ID is `AW-18497720244`. Public IDs live in
 `src/config/googleAds.ts`. No Ads account settings, campaign budget or bidding
 are changed by the website integration.
 
-## Form conversion target is pending
+## Configured form conversion
 
-`quoteSendTo` is intentionally empty until the owner supplies the form action's
-full target, `AW-18497720244/CONVERSION_LABEL`. An account ID alone is not a
-conversion target. Empty or mismatched targets produce no conversion events.
+The owner's Google Ads email supplied the event snippet for the **Contact**
+action. Its confirmed target is `AW-18497720244/a5n2CIiXh5QdELSfs_RE`, configured
+as `quoteSendTo`. This action now measures successful quote-form submissions
+after advertising consent. An account ID alone is not a conversion target;
+empty or mismatched targets produce no conversion events.
 
-Finish the Google Ads setup, then open Goals → Conversions → Summary → the
-form action → Tag setup. The event snippet under manual installation contains
-`send_to`; alternatively, the Use Google Tag Manager tab lists the Conversion
-ID and Conversion label separately. Viewing that tab does not require using
-Tag Manager. Automatically created goals may not have a standalone label;
-create a manual website conversion action for the successful form if needed.
+To replace the destination in future, open Goals → Conversions → Summary →
+the intended action → Tag setup. The manual event snippet contains `send_to`;
+the Use Google Tag Manager tab also lists the ID and label separately. Viewing
+that tab does not require using Tag Manager. Always verify the account and
+action before changing the target.
 
-Suggested definition: **Solicitare ofertă – formular**, category Submit lead
-form (Contact also works), Count One, no invented monetary value. Include the
-validated action in the campaign's conversion goals. Avoid two Primary actions
-measuring the same form. Do not use a page-load rule for the contact page: the
-form confirms success inline rather than on a separate thank-you URL.
+In Google Ads, check that this existing **Contact** action is Primary, uses
+Count One, and is included in the intended campaign's conversion goals. Its
+display name can optionally be clarified to **Solicitare ofertă – formular**.
+The supplied snippet has no monetary value and the event does not invent one.
+Avoid two Primary actions measuring the same form. Do not use a page-load rule
+for the contact page: the form confirms success inline rather than on a
+separate thank-you URL. Account settings and recorded attribution have not
+been inspected or changed through this website integration.
 
 ## Consent and delivery
 
@@ -58,8 +62,8 @@ before and after load, preference expiry, malformed/blocked storage, cross-tab
 changes, missing labels, duplicate script prevention and tag failure.
 
 Browser verification uses intercepted form responses and a mocked Google tag.
-Positive conversion tests use a local test-only label when the production
-label is absent; production files are unchanged by that override. The checks
+Positive conversion tests now use the confirmed production target without
+overriding the website configuration. The checks
 cover invalid/failed/successful submissions, exact event parameters, withdrawal,
 no retroactive events, persistence, mobile widths, dark mode, keyboard focus,
 blocked tags and no-JavaScript behavior. No real form emails or Google conversion
