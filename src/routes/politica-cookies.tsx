@@ -7,7 +7,7 @@ export const Route = createFileRoute('/politica-cookies')({
   head: () =>
     pageHead({
       title: 'Politica cookies | URBISCOR CONSTRUCT',
-      description: 'Informații despre cookie-uri pe site-ul URBISCOR CONSTRUCT. Site-ul nu folosește cookie-uri de urmărire sau de marketing.',
+      description: 'Informații despre cookie-urile necesare, preferințele de afișare și măsurarea Google Ads, activată numai cu acordul tău.',
       path: '/politica-cookies',
     }),
   component: CookiesPage,
@@ -15,16 +15,15 @@ export const Route = createFileRoute('/politica-cookies')({
 
 function CookiesPage() {
   return (
-    <LegalPage title="Politica cookies" updated="6 octombrie 2026">
+    <LegalPage title="Politica cookies" updated="7 octombrie 2026">
       <p>
         Cookie-urile sunt fișiere mici stocate în browser atunci când vizitezi un site. Această pagină explică ce folosește site-ul {site.name}.
       </p>
 
       <h2>Pe scurt</h2>
       <p>
-        <strong>Site-ul nu folosește cookie-uri de analiză, de urmărire sau de marketing.</strong> Nu încărcăm scripturi de tip Google Analytics,
-        Facebook Pixel sau similare, iar fonturile sunt găzduite pe propriul server, fără conexiuni către terți. Din acest motiv, nu îți cerem
-        consimțământul printr-un banner de cookie-uri.
+        <strong>Măsurarea Google Ads este opțională și se activează numai după acordul tău.</strong> Dacă refuzi, formularul și celelalte funcții
+        ale site-ului rămân disponibile. Nu folosim Google Analytics sau Facebook Pixel, iar fonturile sunt găzduite pe propriul server.
       </p>
 
       <h2>Cookie-uri strict necesare</h2>
@@ -47,6 +46,27 @@ function CookiesPage() {
         conform politicilor lor.
       </p>
 
+      <h2>Măsurarea reclamelor Google Ads</h2>
+      <p>
+        Dacă accepți măsurarea, încărcăm eticheta Google Ads pentru a înțelege dacă reclamele noastre duc la solicitări de ofertă.
+        Google poate prelucra identificatori ai clicurilor pe reclame, cookie-uri, adresa IP și informații despre browser și pagina vizitată.
+        Înregistrăm conversia numai după trimiterea cu succes a formularului. Nu trimitem către această etichetă numele, telefonul,
+        emailul sau detaliile completate în formular și nu activăm personalizarea reclamelor.
+      </p>
+      <p>
+        Cookie-urile de măsurare Google Ads, precum cele cu prefixul <code>_gcl_</code>, pot fi păstrate de Google pentru atribuirea conversiilor;
+        durata depinde de cookie și de setările serviciului. Mai multe informații:{' '}
+        <a href="https://policies.google.com/technologies/cookies?hl=ro" target="_blank" rel="noopener noreferrer">Politica Google privind cookie-urile</a>.
+      </p>
+
+      <h2 id="preferinte">Alegerea și retragerea acordului</h2>
+      <p>
+        Poți accepta sau refuza măsurarea din panoul de preferințe. Alegerea este păstrată în browser, în stocarea locală, timp de 180 de zile.
+        O poți modifica oricând din linkul „Preferințe cookies” aflat în subsol. La retragerea acordului oprim înregistrarea conversiilor
+        și eliminăm cookie-urile de măsurare Google Ads accesibile pe domeniul nostru. Pentru cookie-urile domeniilor Google, folosește
+        setările browserului. Fără JavaScript, eticheta Google Ads nu este încărcată.
+      </p>
+
       <h2>Cum controlezi cookie-urile</h2>
       <p>
         Poți șterge sau bloca cookie-urile din setările browserului (Chrome, Firefox, Safari, Edge). Blocarea cookie-urilor strict necesare poate afecta
@@ -55,8 +75,8 @@ function CookiesPage() {
 
       <h2>Modificări</h2>
       <p>
-        Dacă pe viitor vom adăuga instrumente de analiză sau alte cookie-uri care nu sunt strict necesare, acestea vor fi activate doar după ce îți
-        exprimi acordul, iar această politică va fi actualizată.
+        Dacă schimbăm instrumentele de măsurare sau scopurile utilizării cookie-urilor, actualizăm această politică și solicităm acordul
+        corespunzător înainte de activare.
       </p>
 
       <h2>Contact</h2>

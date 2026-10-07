@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
+    "check:ads": "node scripts/check-google-ads.mjs",
     "promote": "node scripts/promote-preview.mjs",
     "indexnow": "node scripts/indexnow.mjs"
   },

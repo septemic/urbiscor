@@ -3,6 +3,7 @@ import { site, whatsappMessage } from '@/config/site'
 import { Icon, WhatsAppIcon } from './Icons'
 import { socialProfiles } from '@/config/social'
 import { Logo } from './Logo'
+import { adsPreferencesEvent } from '@/lib/googleAds'
 
 const footerNav = [
   { label: 'Acasă', to: '/' },
@@ -104,6 +105,18 @@ export function Footer() {
               <Link to="/politica-cookies" className="hover:text-white">
                 Politica cookies
               </Link>
+            </li>
+            <li>
+              <a
+                href="/politica-cookies#preferinte"
+                className="hover:text-white"
+                onClick={(event) => {
+                  event.preventDefault()
+                  window.dispatchEvent(new Event(adsPreferencesEvent))
+                }}
+              >
+                Preferințe cookies
+              </a>
             </li>
           </ul>
         </div>

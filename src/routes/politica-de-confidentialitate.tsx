@@ -15,7 +15,7 @@ export const Route = createFileRoute('/politica-de-confidentialitate')({
 
 function PrivacyPage() {
   return (
-    <LegalPage title="Politica de confidențialitate" updated="6 octombrie 2026">
+    <LegalPage title="Politica de confidențialitate" updated="7 octombrie 2026">
       <p>
         Această politică explică modul în care {site.name} („noi”) prelucrează datele cu caracter personal ale persoanelor care folosesc acest site,
         în conformitate cu Regulamentul (UE) 2016/679 („GDPR”) și cu legislația română aplicabilă.
@@ -35,6 +35,10 @@ function PrivacyPage() {
         <li>informația dacă deții proiectul tehnic.</li>
       </ul>
       <p>Te rugăm să nu incluzi în formular date sensibile care nu sunt necesare pentru ofertare.</p>
+      <p>
+        Dacă accepți măsurarea reclamelor, Google Ads poate prelucra identificatori ai clicurilor, cookie-uri, adresa IP și informații despre
+        browser și pagina vizitată. Nu trimitem către eticheta Google Ads conținutul formularului și nu activăm personalizarea reclamelor.
+      </p>
 
       <h2>3. Scopul și temeiul prelucrării</h2>
       <ul>
@@ -46,8 +50,12 @@ function PrivacyPage() {
           <strong>Funcționarea în siguranță a site-ului</strong> (de exemplu, protecția formularului împotriva mesajelor automate) — temei: interesul
           legitim, art. 6 alin. (1) lit. f) GDPR.
         </li>
+        <li>
+          <strong>Măsurarea rezultatelor reclamelor Google Ads</strong> — numai cu consimțământul tău, art. 6 alin. (1) lit. a) GDPR.
+          Acordul este opțional și poate fi retras oricând din „Preferințe cookies”, fără a afecta prelucrarea anterioară retragerii.
+        </li>
       </ul>
-      <p>Nu folosim datele tale pentru marketing automat și nu le vindem sau închiriem terților.</p>
+      <p>Nu folosim datele completate în formular pentru mesaje automate de marketing și nu le vindem sau închiriem terților.</p>
 
       <h2>4. Cui transmitem datele</h2>
       <ul>
@@ -62,6 +70,11 @@ function PrivacyPage() {
         <li>
           <strong>WhatsApp (Meta)</strong> — doar dacă alegi să ne scrii pe WhatsApp; în acest caz se aplică și politica de confidențialitate WhatsApp.
         </li>
+        <li>
+          <strong>Google Ads</strong> — numai dacă accepți măsurarea reclamelor. Google poate prelucra date și în afara Spațiului Economic European,
+          conform garanțiilor aplicabile și propriei{' '}
+          <a href="https://policies.google.com/privacy?hl=ro" target="_blank" rel="noopener noreferrer">politici de confidențialitate</a>.
+        </li>
         <li>Autorități publice, numai atunci când legea ne obligă.</li>
       </ul>
 
@@ -70,6 +83,10 @@ function PrivacyPage() {
         Păstrăm datele din solicitările de ofertă cât timp este necesar pentru a-ți răspunde și pentru discuțiile legate de proiect. Dacă nu se încheie
         un contract, ștergem solicitarea în cel mult 12 luni. Dacă se încheie un contract, datele se păstrează pe durata impusă de legislația
         aplicabilă.
+      </p>
+      <p>
+        Preferința privind măsurarea reclamelor este păstrată în browser timp de 180 de zile. Detalii despre cookie-urile Google și controlul lor
+        găsești în <Link to="/politica-cookies">Politica cookies</Link>.
       </p>
 
       <h2>6. Drepturile tale</h2>

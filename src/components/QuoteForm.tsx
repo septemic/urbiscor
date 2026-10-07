@@ -2,6 +2,7 @@ import { Link } from '@tanstack/react-router'
 import { useState, type FormEvent } from 'react'
 import { site, whatsappMessage } from '@/config/site'
 import { Icon } from './Icons'
+import { trackQuoteSubmission } from '@/lib/googleAds'
 
 /**
  * Quote request form, handled by Netlify Forms.
@@ -31,6 +32,7 @@ export function QuoteForm({ source }: { source: string }) {
       if (!res.ok) throw new Error(String(res.status))
       form.reset()
       setStatus('success')
+      trackQuoteSubmission()
     } catch {
       setStatus('error')
     }
