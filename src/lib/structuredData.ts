@@ -16,7 +16,7 @@ export function businessSchema() {
       'Construcții case la roșu, fundații, structuri din beton armat, cofrare și zidărie în Oltenia. Sistem Doka, popi metalici și schelă proprii.',
     url: site.url,
     logo: `${site.url}/favicon.svg`,
-    image: `${site.url}/.netlify/images?url=/img/hero.jpg&w=1200&fm=jpg`,
+    image: `${site.url}/img/hero.jpg`,
     telephone: site.phoneE164,
     areaServed: { '@type': 'AdministrativeArea', name: 'Oltenia', containedInPlace: { '@type': 'Country', name: 'România' } },
     contactPoint: {

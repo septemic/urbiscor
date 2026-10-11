@@ -15,9 +15,8 @@ property's reports.
   Crawling is allowed. The sitemap and robots file return HTTP 200.
 - HTTP and `www` already redirect to `https://urbiscor.ro`. An unknown URL
   returns a genuine HTTP 404.
-- `.html` versions and `urbiscor.netlify.app` previously returned duplicate
-  HTML with canonical tags. Explicit permanent redirects now consolidate these
-  URLs while preserving `/__forms.html` for the contact form.
+- `.html` versions previously returned duplicate HTML with canonical tags.
+  Explicit permanent redirects (now in `vercel.json`) consolidate these URLs.
 - Public Bing and DuckDuckGo `site:urbiscor.ro` queries returned no results in
   this environment. Google public search could not be verified here. These
   checks are discovery signals, not an authoritative index count or ranking

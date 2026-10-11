@@ -3,7 +3,7 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import viteTsConfigPaths from 'vite-tsconfig-paths'
 import tailwindcss from '@tailwindcss/vite'
-import netlify from '@netlify/vite-plugin-tanstack-start'
+import { nitro } from 'nitro/vite'
 
 const config = defineConfig({
   plugins: [
@@ -11,19 +11,17 @@ const config = defineConfig({
       projects: ['./tsconfig.json'],
     }),
     tailwindcss(),
-    // The site ships no Netlify Edge Functions, and the emulator bundled with
-    // this plugin launches Deno with `eval --allow-scripts`, a flag Deno 2.9
-    // dropped. Turning the (unused) Edge Functions emulation off keeps local
-    // dev working; Netlify Functions, Image CDN and redirects stay emulated.
-    netlify({ dev: { edgeFunctions: { enabled: false } } }),
-    // Marketing routes have no request-specific data. Serve their generated
-    // HTML from the CDN; the Netlify adapter keeps SSR for unmatched routes.
+    // Marketing routes have no request-specific data. Prerender their generated
+    // HTML so the CDN can serve it directly; Nitro keeps SSR for unmatched routes.
     tanstackStart({
       prerender: { enabled: true, autoSubfolderIndex: false, crawlLinks: false, failOnError: true },
       // This site's small stylesheet can paint with the HTML, without a
       // render-blocking network round trip on slower mobile connections.
       server: { build: { inlineCss: true } },
     }),
+    // Vercel builds through Nitro (Build Output API v3). Nitro detects the
+    // Vercel preset during a Vercel build.
+    nitro(),
     viteReact(),
   ],
 })

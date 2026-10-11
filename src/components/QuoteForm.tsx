@@ -1,20 +1,21 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useSearch } from '@tanstack/react-router'
 import { useState, type FormEvent } from 'react'
 import { site, whatsappMessage } from '@/config/site'
 import { Icon } from './Icons'
 import { trackQuoteSubmission } from '@/lib/googleAds'
 
 /**
- * Quote request form, handled by Netlify Forms.
- * The static skeleton in /public/__forms.html registers the "oferta" form at
- * build time — keep its field list in sync with this component.
+ * Quote request form, handled by the /api/quote server route.
+ * Keep its field list in sync with the REQUIRED_FIELDS check in that route.
  */
 export const projectTypes = ['Casă parter', 'Casă P+1', 'Casă P+M', 'Alt proiect'] as const
 
 type Status = 'idle' | 'sending' | 'success' | 'error'
 
 export function QuoteForm({ source }: { source: string }) {
-  const [status, setStatus] = useState<Status>('idle')
+  // A no-JavaScript native submit is redirected back here with ?oferta=trimis.
+  const search = useSearch({ strict: false }) as { oferta?: string }
+  const [status, setStatus] = useState<Status>(search.oferta === 'trimis' ? 'success' : 'idle')
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -24,7 +25,7 @@ export function QuoteForm({ source }: { source: string }) {
     const data = new FormData(form)
     if (!data.has('proiect_tehnic')) data.set('proiect_tehnic', 'Nu')
     try {
-      const res = await fetch('/__forms.html', {
+      const res = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
@@ -63,12 +64,11 @@ export function QuoteForm({ source }: { source: string }) {
     <form
       name="oferta"
       method="POST"
-      action="/__forms.html"
+      action="/api/quote"
       onSubmit={onSubmit}
       className="ticks border border-line bg-surface p-6 sm:p-8 md:p-10"
       aria-describedby="oferta-nota"
     >
-      <input type="hidden" name="form-name" value="oferta" />
       <input type="hidden" name="sursa" value={source} />
       <p className="hidden" aria-hidden="true">
         <label>

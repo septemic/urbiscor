@@ -5,6 +5,11 @@ work, and serve all seven marketing pages as prerendered HTML through Netlify's
 CDN. The existing design, dark-mode transition, header scroll timeline and
 contact-form submission path remain in place.
 
+> Note: these measurements were taken while the site was hosted on Netlify, before
+> the move to Vercel. Image delivery changed with that move (photos are now served
+> directly from `/public/img` instead of an image CDN) and the quote form now posts
+> to a server route, so the image/LCP numbers should be re-measured.
+
 ## Measurements
 
 PageSpeed Insights was attempted through both its website and public API. The
@@ -46,7 +51,7 @@ reductions are deterministic: 54% fewer font bytes and 33% fewer hero bytes.
 - Native and fallback header progress match the page's scroll fraction. Dark
   mode, mobile navigation, gallery filtering and lightbox controls pass browser
   checks. The hero downloads once using the matching AVIF preload.
-- The prerendered contact form submits the expected fields to `/__forms.html`
+- The prerendered contact form submits the expected fields to `/api/quote`
   in a locally intercepted browser test. No additional real emails were sent.
 
 Font regeneration and deployment details are in the README. For an independent

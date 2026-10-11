@@ -60,8 +60,11 @@ function PrivacyPage() {
       <h2>4. Cui transmitem datele</h2>
       <ul>
         <li>
-          <strong>Netlify, Inc.</strong> — furnizorul de găzduire al site-ului, care stochează mesajele trimise prin formular. Transferul în afara
-          Spațiului Economic European se face pe baza garanțiilor prevăzute de GDPR (de exemplu, clauze contractuale standard).
+          <strong>Vercel Inc.</strong> — furnizorul de găzduire al site-ului. Transferul în afara Spațiului Economic European se face pe baza
+          garanțiilor prevăzute de GDPR (de exemplu, clauze contractuale standard).
+        </li>
+        <li>
+          <strong>Resend</strong> — serviciul folosit pentru a livra prin email mesajele trimise prin formular.
         </li>
         <li>
           <strong>ImprovMX și Google (Gmail)</strong> — notificările cu datele trimise prin formular sunt redirecționate prin ImprovMX către căsuța

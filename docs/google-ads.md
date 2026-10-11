@@ -45,7 +45,7 @@ been inspected or changed through this website integration.
   may process the consent update itself; its already-loaded code cannot be
   unloaded from a running document. On subsequent documents the tag remains
   unloaded while the saved choice is refusal.
-- A configured form event fires only after `/__forms.html` returns success.
+- A configured form event fires only after `/api/quote` returns success.
   It carries the target and a random transaction ID, without names, email,
   phone, project details or monetary value. No events are backfilled after a
   visitor later opts in. Tracking is nonblocking and never determines form

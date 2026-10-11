@@ -28,7 +28,7 @@ function CookiesPage() {
 
       <h2>Cookie-uri strict necesare</h2>
       <p>
-        Furnizorul de găzduire (Netlify) poate folosi elemente tehnice strict necesare pentru livrarea în siguranță a paginilor și pentru protecția
+        Furnizorul de găzduire (Vercel) poate folosi elemente tehnice strict necesare pentru livrarea în siguranță a paginilor și pentru protecția
         formularului împotriva mesajelor automate. Acestea nu servesc la identificarea ta în scopuri de marketing și nu necesită consimțământ, conform
         legislației aplicabile.
       </p>
