@@ -14,7 +14,7 @@ export function pageHead({ title, description, path, breadcrumbs, service }: {
   service?: { name: string; description: string }
 }) {
   const url = `${site.url}${path}`
-  const image = `${site.url}/.netlify/images?url=/img/hero.jpg&w=1200&h=630&fit=cover&fm=jpg`
+  const image = `${site.url}/img/hero.jpg`
   const trail = path === '/' ? [] : [{ name: 'Acasă', path: '/' }, ...(breadcrumbs ?? [{ name: pageNames[path] ?? title, path }])]
   const graph: Record<string, unknown>[] = [{
     '@type': path === '/contact' ? 'ContactPage' : path === '/despre-noi' ? 'AboutPage' : 'WebPage',

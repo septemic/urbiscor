@@ -17,7 +17,8 @@ Website for **URBISCOR CONSTRUCT**, a residential construction company building 
 
 - React 19 + TypeScript, TanStack Start on Vite 7, with prerendered marketing pages and an SSR fallback
 - Tailwind CSS 4 with a small custom design system in `src/styles.css`
-- Netlify Forms for the quote form (`oferta`), Netlify Image CDN for responsive AVIF/WebP images
+- Quote form posts to a Vercel server route (`/api/quote`) that emails enquiries through Resend; no Netlify Forms
+- Images are served directly from `public/img`
 - Self-hosted Manrope + Inter variable fonts (no Google Fonts requests)
 - Google Ads loads only after an explicit advertising opt-in; visitors can refuse or revisit preferences from the footer. No Google Analytics or Facebook Pixel. Form conversion events require the action-specific label; see [docs/google-ads.md](docs/google-ads.md).
 - Light/dark mode toggle in the header; defaults to the system theme and remembers explicit choices in browser local storage. Coordinated palette and icon transitions follow the site's easing and respect reduced motion; saved themes apply immediately on first paint.
@@ -28,7 +29,7 @@ Website for **URBISCOR CONSTRUCT**, a residential construction company building 
 
 ```bash
 pnpm install
-netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated via netlify dev)
+pnpm dev            # Vite/Nitro dev server. Set RESEND_API_KEY + QUOTE_FROM_EMAIL to test form email.
 ```
 
 ## Editing content
@@ -37,22 +38,21 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
 - **Portfolio photos:** `src/data/projects.ts`. Current images are illustrative placeholders (`placeholder: true`, labelled "Imagine ilustrativă" on the site). Add real photos to `public/img/proiecte/` and new entries with `placeholder: false`.
 - **Services:** `src/data/services.ts`; detailed page guidance is in `src/data/servicePages.ts`, with titles/descriptions in `src/config/serviceMetadata.ts` and stable URLs in `src/config/servicePaths.ts`.
 - **Custom domain:** update `site.url` in `src/config/site.ts`, plus `public/sitemap.xml` and `public/robots.txt`.
-- **Quote form fields:** if you change them in `src/components/QuoteForm.tsx`, update `public/__forms.html` to match.
+- **Quote form fields:** if you change them in `src/components/QuoteForm.tsx`, update `REQUIRED_FIELDS` and the email rows in `src/routes/api.quote.ts` to match.
 - **Theme colors:** semantic surface/text colors live in `src/styles.css`; `src/lib/theme.ts` initializes the theme before rendering, and `src/components/ThemeToggle.tsx` handles saved, system, and cross-tab changes. Keep fixed `ink`/white colors for gold buttons and dark image overlays; use `surface`/`foreground` for theme-aware content.
 - **Header progress and sections:** `src/hooks/useHeaderScroll.ts` owns observer lifecycle and the older-browser progress fallback. `sectionId` in `src/components/nav.ts` maps page sections to nav links; unnamed sections inherit the preceding link. Fill and pulse styles live in `src/styles.css`; reduced motion retains progress but disables pulses.
 
 ## Performance
 
-- All 13 content routes are prerendered during `pnpm build`. Netlify serves
-  their HTML from the CDN; its adapter retains SSR for unmatched routes. Flat
+- All 13 content routes are prerendered during `pnpm build`. Vercel serves
+  their HTML from the CDN; Nitro retains SSR for unmatched routes. Flat
   HTML output preserves clean URLs such as `/contact`. The small shared
   stylesheet is inlined through TanStack Start so it can paint with the HTML
   without another blocking request. `PageHead` lowers module-preload priority
   so fonts and the hero can load first; the client entry gives the static HTML
   a paint opportunity before hydration, with immediate hydration in hidden tabs.
-- `Picture` prefers AVIF, with the CDN-negotiated image as a fallback. It builds
-  each priority image's preload from the same quality, widths and sizes;
-  the homepage hero uses one AVIF request. Gallery sizes reflect its actual grid.
+- `Picture` serves each photo directly from `public/img` and preloads the
+  priority hero image so the largest above-the-fold image starts first.
 - Fonts keep Latin and Romanian coverage, including legacy cedillas, with
   variable weights restricted to the site's used 400–800 range. To regenerate them
   after updating Fontsource: install `fonttools[woff]==4.61.1` in a Python
@@ -64,78 +64,46 @@ netlify dev        # or: pnpm dev (Netlify Forms / Image CDN are only emulated v
   Animation frames run during smooth wheel scrolling and stop when it settles.
   Touch scrolling stays native; menu and lightbox locks also stop the frames.
 
-The static `public/__forms.html` skeleton is the sole Netlify form-registration
-source. Runtime forms keep the same name, action, fields and honeypot without
-the build-time attributes that Netlify strips from prerendered HTML.
+The quote form posts to the `/api/quote` server route (`src/routes/api.quote.ts`),
+which validates the fields, checks the honeypot and emails the enquiry through
+Resend.
 
 ## Search visibility
 
 Service pages have independent crawlable URLs, unique metadata and linked
-Service/BreadcrumbList entities. Keep the sitemap and explicit `.html` redirects
-in `netlify.toml` in sync when adding routes. The public Netlify hostname redirects
-to the primary domain; deploy previews remain available. Search Console setup,
+Service/BreadcrumbList entities. Keep the sitemap and the explicit `.html`
+redirects in `vercel.json` in sync when adding routes. Search Console setup,
 local visibility priorities and IndexNow notification instructions are in
 [docs/search-visibility.md](docs/search-visibility.md).
 
 ## Contact form email notifications
 
-The `oferta` form submits to `/__forms.html` and is stored by Netlify Forms. An
-active Netlify email notification for `submission_created` sends new enquiries
-to `contact@urbiscor.ro` with the subject
-`Solicitare de ofertă · URBISCOR CONSTRUCT`. ImprovMX forwards mail for that alias
-to the existing business Gmail inbox.
+The `oferta` form posts to `/api/quote`, which sends the enquiry by email through
+[Resend](https://resend.com) by calling `https://api.resend.com/emails`. ImprovMX
+forwards mail for `contact@urbiscor.ro` to the existing business Gmail inbox.
 
-Manage notifications in Netlify under **Forms → Submission notifications**.
-Manage the alias and forwarding destination in
-ImprovMX. The notification is a site setting that persists across deployments;
-email delivery uses Netlify's notification service and the existing ImprovMX MX
-records. The frontend uses Netlify Forms rather than SMTP credentials.
+Set these environment variables in Vercel (**Project → Settings → Environment
+Variables**):
 
-Notifications apply to verified submissions. If an expected enquiry does not
-arrive, check the form's **Spam submissions** list in Netlify as well as Gmail's
-spam folder, and mark legitimate enquiries as verified.
+- `RESEND_API_KEY` — Resend API key (required)
+- `QUOTE_FROM_EMAIL` — verified sender, e.g. `URBISCOR CONSTRUCT <oferte@urbiscor.ro>` (required)
+- `QUOTE_TO_EMAIL` — recipient; defaults to `contact@urbiscor.ro`
 
-## Publishing when the free-plan build credits are used up
+Without `RESEND_API_KEY` and `QUOTE_FROM_EMAIL` the endpoint returns HTTP 500 and
+the form shows its error state, so configure both before relying on the form.
+Resend domain verification and the ImprovMX alias/forwarding are account settings
+that persist across deployments.
 
-The free plan is credit-based. When a month's credits are gone, Netlify skips
-production builds with `Skipped due to account credit usage exceeded` — but
-**deploy previews still build**. `scripts/promote-preview.mjs` uses that: it
-publishes the preview Netlify just built, without starting another build, so no
-build credits are spent.
+## Deploying on Vercel
 
-```bash
-# one-time: create a personal access token with access to this site, then
-# https://app.netlify.com/user/applications#personal-access-tokens
-setx NETLIFY_AUTH_TOKEN "nfp_..."     # Windows; new shells only
-
-git switch -c update/ceva
-git commit -am "…"
-git push -u origin update/ceva
-gh pr create --fill                   # Netlify builds the deploy preview
-pnpm promote -- --wait                # publish that preview to production
-gh pr merge --squash
-git switch main && git pull
-```
-
-Once the credits reset (or on a paid plan) the normal flow works again: push to
-`main` and Netlify builds and publishes it as usual.
-
-Notes:
-
-- `pnpm promote` publishes the newest ready preview of the **current branch**.
-  Use `--branch <name>` for another branch, `--deploy <id>` to republish a
-  specific deploy (also the way to roll production back), `--dry-run` to look
-  first.
-- The published deploy keeps its `deploy-preview` context label, so
-  context-scoped environment variables would come from the preview values. The
-  site uses no environment variables today.
-- A build that runs entirely on your machine is possible too (`vite build`,
-  bundle `.netlify/v1/functions/server.mjs` with esbuild, then
-  `netlify deploy --prod --no-build --dir dist/client --functions …`), but
-  `--no-build` skips Netlify's build plugins — including the email handler added
-  by the **Emails** integration. Prefer the preview route above.
+Push to `main` and Vercel builds and publishes it; every branch push and pull
+request gets a preview deployment. The build runs `vite build` through Nitro's
+Vercel preset, so Vercel auto-detects the framework and needs no build-command or
+output-directory settings. Redirects and headers live in `vercel.json`. Roll back
+or republish from the Vercel dashboard (**Deployments → Promote to Production**).
 
 ## Still to do (owner input needed)
 
 - Replace the illustrative photos with real URBISCOR CONSTRUCT site photos.
 - Add the company's legal details (CUI, registered office, email) to the privacy policy, and have it reviewed.
+- Confirm the privacy policy's hosting/email processors (now Vercel and Resend) with the owner and have the DPA/transfer wording reviewed.

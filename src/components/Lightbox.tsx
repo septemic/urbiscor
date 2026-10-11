@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import type { Project } from '@/data/projects'
-import { cdn } from '@/lib/image'
+import { imageSrc } from '@/lib/image'
 import { Icon } from './Icons'
 import { setSmoothScrollLock } from '@/lib/smoothScroll'
 
@@ -50,9 +50,7 @@ export function Lightbox({ items, index, onClose, onIndex }: { items: Project[];
         <div className="relative flex min-h-0 flex-1 items-center justify-center px-2 md:px-20" onClick={(e) => e.target === e.currentTarget && onClose()}>
           <img
             key={item.id}
-            src={cdn(item.src, 1920, { q: 80 })}
-            srcSet={`${cdn(item.src, 1080, { q: 78 })} 1080w, ${cdn(item.src, 1920, { q: 80 })} 1920w`}
-            sizes="100vw"
+            src={imageSrc(item.src)}
             alt={item.alt}
             className="max-h-full max-w-full object-contain"
           />

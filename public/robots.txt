@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /__forms.html
 
 Sitemap: https://urbiscor.ro/sitemap.xml

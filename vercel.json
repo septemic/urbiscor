@@ -1,0 +1,41 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "statusCode": 301 },
+    { "source": "/servicii.html", "destination": "/servicii", "statusCode": 301 },
+    { "source": "/proiecte.html", "destination": "/proiecte", "statusCode": 301 },
+    { "source": "/despre-noi.html", "destination": "/despre-noi", "statusCode": 301 },
+    { "source": "/contact.html", "destination": "/contact", "statusCode": 301 },
+    { "source": "/politica-cookies.html", "destination": "/politica-cookies", "statusCode": 301 },
+    { "source": "/politica-de-confidentialitate.html", "destination": "/politica-de-confidentialitate", "statusCode": 301 },
+    { "source": "/servicii/constructii-case-la-rosu.html", "destination": "/servicii/constructii-case-la-rosu", "statusCode": 301 },
+    { "source": "/servicii/fundatii.html", "destination": "/servicii/fundatii", "statusCode": 301 },
+    { "source": "/servicii/structuri-beton-armat.html", "destination": "/servicii/structuri-beton-armat", "statusCode": 301 },
+    { "source": "/servicii/cofrare-doka.html", "destination": "/servicii/cofrare-doka", "statusCode": 301 },
+    { "source": "/servicii/turnare-beton.html", "destination": "/servicii/turnare-beton", "statusCode": 301 },
+    { "source": "/servicii/zidarie.html", "destination": "/servicii/zidarie", "statusCode": 301 }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" }
+      ]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/img/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+    },
+    {
+      "source": "/indexnow-key.txt",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+    }
+  ]
+}
