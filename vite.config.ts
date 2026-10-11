@@ -19,11 +19,9 @@ const config = defineConfig({
       // render-blocking network round trip on slower mobile connections.
       server: { build: { inlineCss: true } },
     }),
-    // Vercel builds through Nitro (Build Output API v3). `entryFormat: 'node'`
-    // selects the Node entry that TanStack Start's prerenderer needs; Nitro's
-    // default web handler replaces `runtime.node` and crashes `vite build` while
-    // prerendering. Nitro detects the Vercel preset during a Vercel build.
-    nitro({ vercel: { entryFormat: 'node' } }),
+    // Vercel builds through Nitro (Build Output API v3). Nitro detects the
+    // Vercel preset during a Vercel build.
+    nitro(),
     viteReact(),
   ],
 })
